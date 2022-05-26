@@ -24,7 +24,7 @@ public class LevelManagerBehavior : MonoBehaviour
     /// <summary>
     /// The scale of the map.
     /// </summary>
-    private int _scale;
+    private int _scale = 1;
 
     /// <summary>
     /// The origin of the map. Where the first node is spawned.
@@ -52,7 +52,7 @@ public class LevelManagerBehavior : MonoBehaviour
         {
             for (int j = 0; j < _rows; j++)
             {
-                node = Instantiate(_nodePrefab, new Vector3(_mapOrigin.x + _scale * i, _mapOrigin.y + _scale * j, _mapOrigin.z + _scale), Quaternion.identity);
+                node = Instantiate(_nodePrefab, new Vector3(_mapOrigin.x + _scale * i, _mapOrigin.y + _scale, _mapOrigin.z + _scale * j), Quaternion.identity);
                 node.GetComponent<NodeBehavior>().XPos = i;
                 node.GetComponent<NodeBehavior>().YPos = j;
                 _nodes.Add(node.GetComponent<NodeBehavior>());

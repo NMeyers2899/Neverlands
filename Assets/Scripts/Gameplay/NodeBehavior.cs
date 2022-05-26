@@ -20,6 +20,11 @@ public class NodeBehavior : MonoBehaviour
     private int _yPos;
 
     /// <summary>
+    /// The cost that a unit needs to pass to move onto the node.
+    /// </summary>
+    private int _cost;
+
+    /// <summary>
     /// The position of this node on the x.
     /// </summary>
     public int XPos { get { return _xPos; } set { _xPos = value; } }
@@ -29,6 +34,14 @@ public class NodeBehavior : MonoBehaviour
     /// </summary>
     public int YPos { get { return _yPos; } set { _yPos = value; } }
 
+    /// <summary>
+    /// The cost that a unit needs to pass to move onto the node.
+    /// </summary>
+    public int Cost { get { return _cost; } }
+
+    /// <summary>
+    /// Toggles whether or not the space is occupied.
+    /// </summary>
     public void OccupySpace()
     {
         GameManagerBehavior.Instance.ToggleCondition(_isOccupied);
