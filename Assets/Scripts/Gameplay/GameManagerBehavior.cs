@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class GameManagerBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private static GameManagerBehavior _instance;
+
+    public static GameManagerBehavior Instance
     {
-        
+        get 
+        {
+            if (_instance)
+                return _instance;
+            else
+                return _instance = new GameManagerBehavior();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Toggles a boolean variable to true or false depending on what it currently is.
+    /// </summary>
+    /// <param name="condition"> The boolean being assigned a new value. </param>
+    /// <returns> What the boolean is after toggling. </returns>
+    public bool ToggleCondition(bool condition)
     {
-        
+        if (condition)
+            condition = false;
+        else
+            condition = true;
+
+        return condition;
     }
 }
