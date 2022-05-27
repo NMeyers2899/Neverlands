@@ -13,6 +13,7 @@ public class LevelManagerBehavior : MonoBehaviour
     /// <summary>
     /// The nodes that make up the current level.
     /// </summary>
+    [SerializeField]
     private List<NodeBehavior> _nodes = new List<NodeBehavior>();
 
     // The columns of rows of the grid.
