@@ -20,12 +20,25 @@ public class SquadMovementBehavior : MovementBehavior
     /// </summary>
     public Vector3 TargetPos { get { return _targetPos; } set { _targetPos = value; } }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if(Vector3.Distance(transform.position, _targetPos) > 2)
+        // Sets the target position to the squad's starting point.
+        _targetPos = transform.position;
+    }
+
+    // Update is called once per frame
+    public override void Update()
+    {
+        // If the squad has a targeted position and its distance from it is greater than two...
+        if (Vector3.Distance(transform.position, _targetPos) > 2)
         {
-            Velocity = (transform.position - _targetPos).normalized * _speed;
+            // ...set the squad to move towards that position.
+            Velocity = (transform.position + _targetPos).normalized * _speed;
+
+            // Clamps the velocity of the squad on the y-axis.
+            Velocity = new Vector3(Velocity.x, 0, Velocity.z);
+
+            base.Update();
         }
     }
 }
