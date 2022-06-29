@@ -57,8 +57,10 @@ public class GameManagerBehavior : MonoBehaviour
 
             // Check if something was hit, if it was and you have no squad selected...
             if (Physics.Raycast(ray, out _hit) && _selectedSquad == null)
+            {
                 // ...run the SelectSquad function, giving it the transform of what was hit.
                 SelectSquad(_hit.transform);
+            }
             // If the player has a selected squad...
             else
                 // ...set that squad's target to the hit point.
