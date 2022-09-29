@@ -370,10 +370,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panSpeed: 20
-  _panBorderDistance: 5
+  _panBorderDistance: 150
   _panLimit: {x: 30, y: 30}
   _scrollSpeed: 1000
-  _scrollLimit: 0
 --- !u!1001 &1474016941
 PrefabInstance:
   m_ObjectHideFlags: 0

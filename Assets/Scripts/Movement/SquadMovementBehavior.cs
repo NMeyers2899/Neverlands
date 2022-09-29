@@ -27,18 +27,18 @@ public class SquadMovementBehavior : MovementBehavior
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void FixedUpdate()
     {
         // If the squad has a targeted position and its distance from it is greater than two...
         if (Vector3.Distance(transform.position, _targetPos) > 2)
         {
             // ...set the squad to move towards that position.
-            Velocity = (transform.position + _targetPos).normalized * _speed;
+            Velocity = (_targetPos - transform.position).normalized * _speed;
 
             // Clamps the velocity of the squad on the y-axis.
             Velocity = new Vector3(Velocity.x, 0, Velocity.z);
 
-            base.Update();
+            base.FixedUpdate();
         }
     }
 }

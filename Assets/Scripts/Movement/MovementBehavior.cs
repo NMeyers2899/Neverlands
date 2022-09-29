@@ -9,8 +9,8 @@ public class MovementBehavior : MonoBehaviour
     public Vector3 Velocity { get { return _velocity; } set { _velocity = value; } }
 
     // Update is called once per frame
-    public virtual void Update()
+    public virtual void FixedUpdate()
     {
-        transform.position += Velocity * Time.deltaTime;
+        transform.position += Velocity * Time.fixedDeltaTime;
     }
 }

@@ -27,12 +27,6 @@ public class CameraMovementBehavior : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float _scrollSpeed;
-
-    /// <summary>
-    /// How far the mouse can scroll around.
-    /// </summary>
-    [SerializeField]
-    private float _scrollLimit;
     
     // Update is called once per frame
     void Update()
