@@ -47,6 +47,11 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_selectedSquad)
+        {
+            LineRenderer line = _selectedSquad.GetComponent<LineRenderer>();
+        }
+
         // If the player left clicks...
         if (Input.GetMouseButtonDown(0))
         {
