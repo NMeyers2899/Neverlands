@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Unit Type", menuName = "Unit/Create New Unit Type")]
 public class UnitStats : ScriptableObject
 {
     /// <summary>
