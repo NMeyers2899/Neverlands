@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cecc9368a81e41b0b5f8b424655c5, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  _maxHealth: 0
-  _currentHealth: 0
-  _attackPower: 0
-  _defensePower: 0
-  _resistancePower: 0
-  _speedPower: 0
-  _critChance: 0
-  _hitChance: 0
+  _maxHealth: 10
+  _currentHealth: 10
+  _attackPower: 3
+  _defensePower: 3
+  _resistancePower: 3
+  _speedPower: 3
+  _critChance: 3
+  _hitChance: 3
