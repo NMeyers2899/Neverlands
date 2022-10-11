@@ -10,6 +10,11 @@ public class GameManagerBehavior : MonoBehaviour
     private SquadMovementBehavior _selectedSquad;
 
     /// <summary>
+    /// The material given to the icons of a unit or town to denote their faction.
+    /// </summary>
+    public static Material PlayerFactionMaterial, NeutralFactionMaterial, EnemyFactionMaterial;
+
+    /// <summary>
     /// The object that will be hit with a ray.
     /// </summary>
     private RaycastHit _hit;
