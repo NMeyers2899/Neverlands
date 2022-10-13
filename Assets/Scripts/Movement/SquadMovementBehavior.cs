@@ -20,8 +20,10 @@ public class SquadMovementBehavior : MovementBehavior
     /// </summary>
     public Vector3 TargetPos { get { return _targetPos; } set { _targetPos = value; } }
 
-    private void Awake()
+    public override void Awake()
     {
+        base.Awake();
+
         // Sets the target position to the squad's starting point.
         _targetPos = transform.position;
     }

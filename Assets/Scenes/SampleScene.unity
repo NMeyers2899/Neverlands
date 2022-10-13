@@ -538,6 +538,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3673615002384676830, guid: 32b5b75a0c60f1f408f3f4979fa1ab34, type: 3}
+      propertyPath: FactionTag
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4087832152904130714, guid: 32b5b75a0c60f1f408f3f4979fa1ab34, type: 3}
       propertyPath: m_Name
       value: Town

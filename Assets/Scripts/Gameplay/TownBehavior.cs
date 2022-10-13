@@ -10,6 +10,16 @@ public class TownBehavior : MonoBehaviour
     public string FactionTag;
 
     /// <summary>
+    /// The object that will show which faction this town is affiliated with.
+    /// </summary>
+    public MeshRenderer  FactionIcon;
+
+    /// <summary>
+    /// The material given to the icons of a unit or town to denote their faction.
+    /// </summary>
+    public Material PlayerFactionMaterial, NeutralFactionMaterial, EnemyFactionMaterial;
+
+    /// <summary>
     /// The squads that are currently within the town.
     /// </summary>
     private List<GameObject> _nestedSquads;
@@ -22,11 +32,58 @@ public class TownBehavior : MonoBehaviour
     private void Awake()
     {
         tag = FactionTag;
+
+        if (tag == "Player")
+            FactionIcon.material = PlayerFactionMaterial;
+        else if (tag == "Neutral")
+            FactionIcon.material = NeutralFactionMaterial;
+        else if (tag == "Enemy")
+            FactionIcon.material = EnemyFactionMaterial;
+
+        _nestedSquads = new List<GameObject>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    /// <summary>
+    /// Performs the logic for adding a squad to this town.
+    /// </summary>
+    /// <param name="squad"> The squad being added. </param>
+    private void OnAdd(SquadMovementBehavior squad)
     {
-        if (other.GetComponent<SquadMovementBehavior>() && other.CompareTag(tag))
-            _nestedSquads.Add(other.gameObject);
+        // Add the squad to this town's list.
+        _nestedSquads.Add(squad.gameObject);
+
+        // Change the location and scale of the object.
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Checks to see if the other object is a squad.
+        SquadMovementBehavior squad = collision.gameObject.GetComponent<SquadMovementBehavior>();
+
+        // If not, don't do anything.
+        if (!squad)
+            return;
+
+        // If the squad shares a tag with this town, perform the logic for adding it to the town.
+        if (squad.CompareTag(tag))
+            OnAdd(squad);
+
+        // If the squad is not a part of the same faction...
+        else if (!squad.CompareTag(tag) && _nestedSquads.Count == 0)
+        {
+            // ...change the material of the icon depending on which faction is taking the town.
+            if (squad.tag == "Player")
+                FactionIcon.material = PlayerFactionMaterial;
+            else if (squad.tag == "Neutral")
+                FactionIcon.material = NeutralFactionMaterial;
+            else if (squad.tag == "Enemy")
+                FactionIcon.material = EnemyFactionMaterial;
+
+            // Change this town's tag based on the squad's tag.
+            tag = squad.tag;
+
+            // Add the squad to the town's list.
+            OnAdd(squad);
+        }
     }
 }
