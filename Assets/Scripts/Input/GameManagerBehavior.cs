@@ -7,12 +7,7 @@ public class GameManagerBehavior : MonoBehaviour
     /// <summary>
     /// The squad that the player has currently selected.
     /// </summary>
-    private SquadMovementBehavior _selectedSquad;
-
-    /// <summary>
-    /// The material given to the icons of a unit or town to denote their faction.
-    /// </summary>
-    public static Material PlayerFactionMaterial, NeutralFactionMaterial, EnemyFactionMaterial;
+    private static SquadMovementBehavior _selectedSquad;
 
     /// <summary>
     /// The object that will be hit with a ray.
@@ -42,9 +37,14 @@ public class GameManagerBehavior : MonoBehaviour
     }
 
     /// <summary>
+    /// The squad that the player has currently selected.
+    /// </summary>
+    public static SquadMovementBehavior SelectedSquad { get { return _selectedSquad; } }
+
+    /// <summary>
     /// Handles the logic that occurs when a unit is deselected.
     /// </summary>
-    public void DeselectSquad()
+    public static void DeselectSquad()
     {
         _selectedSquad = null;
     }
@@ -52,11 +52,6 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_selectedSquad)
-        {
-            LineRenderer line = _selectedSquad.GetComponent<LineRenderer>();
-        }
-
         // If the player left clicks...
         if (Input.GetMouseButtonDown(0))
         {

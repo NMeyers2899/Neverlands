@@ -56,6 +56,13 @@ public class TownBehavior : MonoBehaviour
         squad.transform.localScale /= 2;
         squad.transform.position = transform.position;
         squad.TargetPos = transform.position;
+
+        // Disable the squad's collider while it is in the town.
+        squad.GetComponentInChildren<Collider>().enabled = false;
+
+        // Has the game manager deselect the squad as long as it is the one the player currently controls.
+        if(GameManagerBehavior.SelectedSquad == squad)
+            GameManagerBehavior.DeselectSquad();
     }
 
     private void OnCollisionEnter(Collision collision)

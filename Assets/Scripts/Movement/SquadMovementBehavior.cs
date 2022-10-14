@@ -42,5 +42,10 @@ public class SquadMovementBehavior : MovementBehavior
 
             base.FixedUpdate();
         }
+        else
+        {
+            Velocity = new Vector3(0, 0, 0);
+            base.FixedUpdate();
+        }
     }
 }
