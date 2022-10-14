@@ -53,6 +53,9 @@ public class TownBehavior : MonoBehaviour
         _nestedSquads.Add(squad.gameObject);
 
         // Change the location and scale of the object.
+        squad.transform.localScale /= 2;
+        squad.transform.position = transform.position;
+        squad.TargetPos = transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
