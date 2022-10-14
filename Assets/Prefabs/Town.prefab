@@ -127,11 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb407013dc6004188de5c5b7b01ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactionTag: Neutral
-  FactionIcon: {fileID: 4600416350250204434}
+  _factionTag: Enemy
+  _factionIcon: {fileID: 0}
   PlayerFactionMaterial: {fileID: 2100000, guid: 5c9f79734a4b6a64a81c4f329bd374b6, type: 2}
   NeutralFactionMaterial: {fileID: 2100000, guid: a993a16268eb9094f9020997653b6b7f, type: 2}
   EnemyFactionMaterial: {fileID: 2100000, guid: ce1cb8c4e13b0854680cc48f7a2e146b, type: 2}
+  _nestedSquads: []
 --- !u!54 &4473994263470103856
 Rigidbody:
   m_ObjectHideFlags: 0

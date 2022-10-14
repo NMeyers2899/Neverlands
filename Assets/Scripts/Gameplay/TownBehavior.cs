@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class TownBehavior : MonoBehaviour
 {
-    /// <summary>
-    /// The tag that represents which faction currently controls the town (for inital map setup).
-    /// </summary>
-    public string FactionTag;
+    [SerializeField]
+    [Tooltip("The tag that represents which faction currently controls the town (for inital map setup).")]
+    private string _factionTag;
 
-    /// <summary>
-    /// The object that will show which faction this town is affiliated with.
-    /// </summary>
-    public MeshRenderer  FactionIcon;
+    [SerializeField]
+    [Tooltip("The object that will show which faction this town is affiliated with.")]
+    private MeshRenderer _factionIcon;
 
-    /// <summary>
-    /// The material given to the icons of a unit or town to denote their faction.
-    /// </summary>
-    public Material PlayerFactionMaterial, NeutralFactionMaterial, EnemyFactionMaterial;
+    [SerializeField]
+    [Tooltip("The material given to the icons of a unit or town to denote their faction.")]
+    private Material PlayerFactionMaterial, NeutralFactionMaterial, EnemyFactionMaterial;
 
-    /// <summary>
-    /// The squads that are currently within the town.
-    /// </summary>
+    [SerializeField]
+    [Tooltip("The squads that are currently within the town.")]
     private List<GameObject> _nestedSquads;
 
     /// <summary>
@@ -31,14 +27,14 @@ public class TownBehavior : MonoBehaviour
 
     private void Awake()
     {
-        tag = FactionTag;
+        tag = _factionTag;
 
         if (tag == "Player")
-            FactionIcon.material = PlayerFactionMaterial;
+            _factionIcon.material = PlayerFactionMaterial;
         else if (tag == "Neutral")
-            FactionIcon.material = NeutralFactionMaterial;
+            _factionIcon.material = NeutralFactionMaterial;
         else if (tag == "Enemy")
-            FactionIcon.material = EnemyFactionMaterial;
+            _factionIcon.material = EnemyFactionMaterial;
 
         _nestedSquads = new List<GameObject>();
     }
@@ -52,13 +48,12 @@ public class TownBehavior : MonoBehaviour
         // Add the squad to this town's list.
         _nestedSquads.Add(squad.gameObject);
 
-        // Change the location and scale of the object.
-        squad.transform.localScale /= 2;
+        // Change the location of the object, and disable it.
         squad.transform.position = transform.position;
         squad.TargetPos = transform.position;
 
         // Disable the squad's collider while it is in the town.
-        squad.GetComponentInChildren<Collider>().enabled = false;
+        squad.gameObject.SetActive(false);
 
         // Has the game manager deselect the squad as long as it is the one the player currently controls.
         if(GameManagerBehavior.SelectedSquad == squad)
@@ -83,11 +78,11 @@ public class TownBehavior : MonoBehaviour
         {
             // ...change the material of the icon depending on which faction is taking the town.
             if (squad.tag == "Player")
-                FactionIcon.material = PlayerFactionMaterial;
+                _factionIcon.material = PlayerFactionMaterial;
             else if (squad.tag == "Neutral")
-                FactionIcon.material = NeutralFactionMaterial;
+                _factionIcon.material = NeutralFactionMaterial;
             else if (squad.tag == "Enemy")
-                FactionIcon.material = EnemyFactionMaterial;
+                _factionIcon.material = EnemyFactionMaterial;
 
             // Change this town's tag based on the squad's tag.
             tag = squad.tag;

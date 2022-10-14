@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class GameManagerBehavior : MonoBehaviour
 {
-    /// <summary>
-    /// The squad that the player has currently selected.
-    /// </summary>
+    [Tooltip("The squad that the player has currently selected.")]
     private static SquadMovementBehavior _selectedSquad;
 
-    /// <summary>
-    /// The object that will be hit with a ray.
-    /// </summary>
+    [Tooltip("The object that will be hit with a ray.")]
     private RaycastHit _hit;
 
-    /// <summary>
-    /// The current position of the mouse when the user clicks either button.
-    /// </summary>
+    [Tooltip("The current position of the mouse when the user clicks either button.")]
     private Vector3 _mousePosition;
 
     /// <summary>

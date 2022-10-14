@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SquadMovementBehavior : MovementBehavior
 {
-    /// <summary>
-    /// The position that the squad will move towards.
-    /// </summary>
+    [Tooltip("The position that the squad will move towards.")]
     private Vector3 _targetPos;
 
-    /// <summary>
-    /// The speed at which the unit moves on the map.
-    /// </summary>
     [SerializeField]
+    [Tooltip("The speed at which the unit moves on the map.")]
     private float _speed;
 
     /// <summary>

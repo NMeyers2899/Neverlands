@@ -5,51 +5,35 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Unit Type", menuName = "Unit/Create New Unit Type")]
 public class UnitStats : ScriptableObject
 {
-    /// <summary>
-    /// The maximum possible health of the unit.
-    /// </summary>
     [SerializeField]
+    [Tooltip("The maximum possible health of the unit.")]
     private float _maxHealth;
 
-    /// <summary>
-    /// The current health of the unit, capped at its max health.
-    /// </summary>
     [SerializeField]
+    [Tooltip("The current health of the unit, capped at its max health.")]
     private float _currentHealth;
 
-    /// <summary>
-    /// How much damage the unit will deal.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How much damage the unit will deal.")]
     private float _attackPower;
 
-    /// <summary>
-    /// How resistant the unit is to physical damage.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How resistant the unit is to physical damage.")]
     private float _defensePower;
 
-    /// <summary>
-    /// How resistant the unit is to magic damage.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How resistant the unit is to magic damage.")]
     private float _resistancePower;
 
-    /// <summary>
-    /// How quickly the unit will be able to move and attack during combat.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How well the unit is able to dodge incoming attacks.")]
     private float _speedPower;
 
-    /// <summary>
-    /// Influences the chance of a unit to get a critical hit.
-    /// </summary>
     [SerializeField]
+    [Tooltip("Influences the chance of a unit to get a critical hit.")]
     private float _critChance;
 
-    /// <summary>
-    /// Influences the chace of a unit to hit an opponent.
-    /// </summary>
     [SerializeField]
+    [Tooltip("Influences the chace of a unit to hit an opponent.")]
     private float _hitChance;
 }

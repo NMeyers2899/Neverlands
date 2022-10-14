@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class CameraMovementBehavior : MonoBehaviour
 {
-    /// <summary>
-    /// How fast the camera will be able to move.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How fast the camera will be able to move.")]
     private float _panSpeed;
 
-    /// <summary>
-    /// How far the mouse needs to be away from the border to make the camera move in that direction.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How far the mouse needs to be away from the border to make the camera move in that direction.")]
     private float _panBorderDistance;
 
-    /// <summary>
-    /// How far the camera will be able to move.
-    /// </summary>
     [SerializeField]
+    [Tooltip("How far the camera will be able to move.")]
     private Vector2 _panLimit;
 
-    /// <summary>
-    /// Changes how fast the camera will zoom in or out when using the scroll wheel.
-    /// </summary>
     [SerializeField]
+    [Tooltip("Changes how fast the camera will zoom in or out when using the scroll wheel.")]
     private float _scrollSpeed;
     
     // Update is called once per frame

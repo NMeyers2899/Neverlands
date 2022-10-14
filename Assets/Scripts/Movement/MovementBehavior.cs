@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MovementBehavior : MonoBehaviour
 {
+    [Tooltip("The velocity of the object.")]
     private Vector3 _velocity;
 
+    [Tooltip("The rigid body of the object this is attached to.")]
     private Rigidbody _rigidbody;
 
     public Vector3 Velocity { get { return _velocity; } set { _velocity = value; } }
