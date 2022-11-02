@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241cecc9368a81e41b0b5f8b424655c5, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
-  _unitName: Soldier
-  _unitType: Infantry
   _attackIsMagic: 0
   _maxHealth: 10
   _attackPower: 3
@@ -21,3 +19,9 @@ MonoBehaviour:
   _resistancePower: 3
   _speedPower: 3
   _hitChance: 3
+  _healthApptitude: 50
+  _attackApptitude: 25
+  _defenseApptitude: 30
+  _resistanceApptitude: 10
+  _speedApptitude: 15
+  _hitApptitude: 10

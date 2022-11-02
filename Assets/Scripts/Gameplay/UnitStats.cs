@@ -6,18 +6,6 @@ using UnityEngine;
 public class UnitStats : ScriptableObject
 {
     [SerializeField]
-    [Tooltip("What the unit will be called.")]
-    private string _unitName;
-
-    [SerializeField]
-    [Tooltip("The model for the unit.")]
-    private GameObject _unitMesh;
-
-    [SerializeField]
-    [Tooltip("The type that determines the order of action in battle.")]
-    private string _unitType;
-
-    [SerializeField]
     [Tooltip("Determines whether or not the unit's attack is magic based or not. " +
         "(Determines whether or not the unit will use Defense or Resistance when reducing damage during an attack.)")]
     private bool _attackIsMagic;
@@ -46,20 +34,9 @@ public class UnitStats : ScriptableObject
     [Tooltip("Influences the chance of a unit to hit an opponent.")]
     private float _hitChance;
 
-    /// <summary>
-    /// What the unit will be called.
-    /// </summary>
-    public string UnitName { get { return _unitName; } }
-
-    /// <summary>
-    /// The model for the unit.
-    /// </summary>
-    public GameObject UnitMesh { get { return _unitMesh;} }
-
-    /// <summary>
-    /// The type that determines the order of action in battle.
-    /// </summary>
-    public string UnitType { get { return _unitType; } }
+    [SerializeField]
+    [Tooltip("The percentage that stats will increase by on a level up.")]
+    private float _healthApptitude, _attackApptitude, _defenseApptitude, _resistanceApptitude, _speedApptitude, _hitApptitude;
 
     /// <summary>
     /// The maximum possible health of the unit.
@@ -89,5 +66,35 @@ public class UnitStats : ScriptableObject
     /// <summary>
     /// Influences the chance of a unit to hit an opponent.
     /// </summary>
-    public float HitChange { get { return _hitChance; } }
+    public float HitChance { get { return _hitChance; } }
+
+    /// <summary>
+    /// The percentage that health will increase upon a level up.
+    /// </summary>
+    public float HealthApptitude { get { return _healthApptitude; } }
+
+    /// <summary>
+    /// The percentage that attack will increase upon a level up.
+    /// </summary>
+    public float AttackApptitude { get { return _attackApptitude; } }
+
+    /// <summary>
+    /// The percentage that defense will increase upon a level up.
+    /// </summary>
+    public float DefenseApptitude { get { return _defenseApptitude; } }
+
+    /// <summary>
+    /// The percentage that resistance will increase upon a level up.
+    /// </summary>
+    public float ResistanceApptitude { get { return _resistanceApptitude; } }
+
+    /// <summary>
+    /// The percentage that speed will increase upon a level up.
+    /// </summary>
+    public float SpeedApptitude { get { return _speedApptitude; } }
+
+    /// <summary>
+    /// The percentage that hit will increase upon a level up.
+    /// </summary>
+    public float HitApptitude { get { return _hitApptitude; } }
 }
