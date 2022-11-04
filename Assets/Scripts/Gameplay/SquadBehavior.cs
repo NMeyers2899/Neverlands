@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SquadBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    [Tooltip("The list of units within this squad.")]
+    private UnitBehavior[] _units = new UnitBehavior[9];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    [Tooltip("The commanding unit of the squad. If they die in battle, the squad is defeated.")]
+    private UnitBehavior _commanderUnit;
 }

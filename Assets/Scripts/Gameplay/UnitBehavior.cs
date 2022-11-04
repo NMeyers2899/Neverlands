@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class UnitBehavior : MonoBehaviour
 {
+    [SerializeField]
     [Tooltip("The name of the unit.")]
     private string _unitName;
 
+    [SerializeField]
     [Tooltip("The type that determines the order of action in battle.")]
     private string _unitType;
 
+    [SerializeField]
     [Tooltip("The stats for the given unit.")]
     private UnitStats _unitClassStats, _unitRaceStats;
 
@@ -36,6 +39,16 @@ public class UnitBehavior : MonoBehaviour
 
     [Tooltip("The percentage that stats will increase by on a level up.")]
     private float _healthApptitude, _attackApptitude, _defenseApptitude, _resistanceApptitude, _speedApptitude, _hitApptitude;
+
+    /// <summary>
+    /// The name of the unit.
+    /// </summary>
+    public string UnitName { get { return _unitName; } }
+
+    /// <summary>
+    /// The current health of the unit. Once it reaches zero, the unit is considered dead.
+    /// </summary>
+    public float CurrentHealth { get { return _currentHealth; } }
 
     /// <summary>
     /// The maximum possible health of the unit.
@@ -101,6 +114,7 @@ public class UnitBehavior : MonoBehaviour
     {
         // Setting up the unit's base stats by combining the class and race stats.
         _maxHealth = _unitClassStats.MaxHealth + _unitRaceStats.MaxHealth;
+        _currentHealth = _maxHealth;
         _attackPower = _unitClassStats.AttackPower + _unitRaceStats.AttackPower;
         _defensePower = _unitClassStats.DefensePower + _unitRaceStats.DefensePower;
         _resistancePower = _unitClassStats.ResistancePower + _unitRaceStats.ResistancePower;
