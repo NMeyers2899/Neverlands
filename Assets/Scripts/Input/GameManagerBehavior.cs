@@ -16,7 +16,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The panel that will display a squad, town, or unit's stats.")]
-    private static SquadViewBehavior _squadViewPanel;
+    private SquadViewBehavior _squadViewPanel;
 
     /// <summary>
     /// Handles the logic that occurs when a unit is selected.
@@ -46,7 +46,6 @@ public class GameManagerBehavior : MonoBehaviour
     public static void DeselectSquad()
     {
         _selectedSquad = null;
-        _squadViewPanel.SelectedSquad = null;
     }
 
     // Update is called once per frame

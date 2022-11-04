@@ -11,4 +11,9 @@ public class SquadBehavior : MonoBehaviour
     [SerializeField]
     [Tooltip("The commanding unit of the squad. If they die in battle, the squad is defeated.")]
     private UnitBehavior _commanderUnit;
+
+    /// <summary>
+    /// The list of units within this squad.
+    /// </summary>
+    public UnitBehavior[] Units { get { return _units; } }
 }

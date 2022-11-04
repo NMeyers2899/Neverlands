@@ -7,7 +7,7 @@ public class SquadViewBehavior : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The buttons that appear on the panel that reference the units in a given squad.")]
-    private Button[] _unitIcons = new Button[9];
+    private Text[] _unitIcons = new Text[9];
 
     [SerializeField]
     [Tooltip("The text boxes that reference a given unit's stats.")]
@@ -15,22 +15,25 @@ public class SquadViewBehavior : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The unit currently being looked at.")]
-    private UnitBehavior _unit;
-
-    [SerializeField]
-    [Tooltip("The squad that the view panel is currently looking at.")]
-    private SquadBehavior _selectedSquad;
-
-    /// <summary>
-    /// The squad that the view panel is currently looking at.
-    /// </summary>
-    public SquadBehavior SelectedSquad { get { return _selectedSquad; } 
-                                         set { _selectedSquad = value; } }
+    private static UnitBehavior _unit;
 
     private void Update()
     {
+        enabled = false;
+        if(GameManagerBehavior.SelectedSquad)
+        {
+            enabled = true;
+
+            for (int i = 0; i < _unitIcons.Length; i++)
+                _unitIcons[i].text = GameManagerBehavior.SelectedSquad.Squad.Units[i].UnitName;
+        }
+            
+        // If there is no unit currently being looked at, the text boxes are empty.
         if (!_unit)
-            return;
+        {
+            _unitStats[0].text = "";
+            _unitStats[1].text = "";
+        }
 
         _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +
                            "\nHealth: " + _unit.CurrentHealth + "/" + _unit.MaxHealth + "\n" +

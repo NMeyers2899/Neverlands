@@ -11,10 +11,19 @@ public class SquadMovementBehavior : MovementBehavior
     [Tooltip("The speed at which the unit moves on the map.")]
     private float _speed;
 
+    [SerializeField]
+    [Tooltip("The squad that belongs to this object's movement behavior.")]
+    private SquadBehavior _squad;
+
     /// <summary>
     /// The position that the squad will move towards.
     /// </summary>
     public Vector3 TargetPos { get { return _targetPos; } set { _targetPos = value; } }
+
+    /// <summary>
+    /// The squad that belongs to this object's movement behavior.
+    /// </summary>
+    public SquadBehavior Squad { get { return _squad; } }
 
     public override void Awake()
     {
