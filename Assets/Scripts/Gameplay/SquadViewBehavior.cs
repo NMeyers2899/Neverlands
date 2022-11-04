@@ -21,6 +21,12 @@ public class SquadViewBehavior : MonoBehaviour
     [Tooltip("The squad that the view panel is currently looking at.")]
     private SquadBehavior _selectedSquad;
 
+    /// <summary>
+    /// The squad that the view panel is currently looking at.
+    /// </summary>
+    public SquadBehavior SelectedSquad { get { return _selectedSquad; } 
+                                         set { _selectedSquad = value; } }
+
     private void Update()
     {
         if (!_unit)

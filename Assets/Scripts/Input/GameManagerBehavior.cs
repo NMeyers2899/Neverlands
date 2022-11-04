@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class GameManagerBehavior : MonoBehaviour
 
     [Tooltip("The current position of the mouse when the user clicks either button.")]
     private Vector3 _mousePosition;
+
+    [SerializeField]
+    [Tooltip("The panel that will display a squad, town, or unit's stats.")]
+    private static SquadViewBehavior _squadViewPanel;
 
     /// <summary>
     /// Handles the logic that occurs when a unit is selected.
@@ -41,6 +46,7 @@ public class GameManagerBehavior : MonoBehaviour
     public static void DeselectSquad()
     {
         _selectedSquad = null;
+        _squadViewPanel.SelectedSquad = null;
     }
 
     // Update is called once per frame
