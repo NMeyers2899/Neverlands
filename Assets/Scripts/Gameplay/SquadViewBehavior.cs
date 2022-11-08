@@ -14,25 +14,43 @@ public class SquadViewBehavior : MonoBehaviour
     private Text[] _unitStats = new Text[2];
 
     [SerializeField]
+    [Tooltip("The squad this panel is looking at.")]
+    private SquadBehavior _squad;
+
+    [SerializeField]
     [Tooltip("The unit currently being looked at.")]
-    private static UnitBehavior _unit;
+    private UnitBehavior _unit;
+
+    /// <summary>
+    /// The squad this panel is looking at.
+    /// </summary>
+    public SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
 
     private void Update()
     {
-        enabled = false;
-        if(GameManagerBehavior.SelectedSquad)
+        if(_squad)
         {
-            enabled = true;
+            return;
+        }
 
-            for (int i = 0; i < _unitIcons.Length; i++)
-                _unitIcons[i].text = GameManagerBehavior.SelectedSquad.Squad.Units[i].UnitName;
+        for (int i = 0; i < _unitIcons.Length; i++)
+        {
+            if (!_squad.Units[i])
+            {
+                _unitIcons[i].text = "";
+                continue;
+            }
+
+            _unitIcons[i].text = _squad.Units[i].UnitName;
         }
             
+
         // If there is no unit currently being looked at, the text boxes are empty.
         if (!_unit)
         {
             _unitStats[0].text = "";
             _unitStats[1].text = "";
+            return;
         }
 
         _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +

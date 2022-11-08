@@ -33,6 +33,12 @@ public class GameManagerBehavior : MonoBehaviour
         if (selectedSquad.CompareTag("Player"))
             // ...make the current selected squad that squad.
             _selectedSquad = selectedSquad.GetComponent<SquadMovementBehavior>();
+
+        if (selectedSquad.GetComponent<SquadBehavior>())
+        {
+            _squadViewPanel.enabled = true;
+            _squadViewPanel.Squad = selectedSquad.GetComponent<SquadBehavior>();
+        }
     }
 
     /// <summary>
@@ -51,6 +57,9 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!_selectedSquad)
+            _squadViewPanel.enabled = false;
+
         // If the player left clicks...
         if (Input.GetMouseButtonDown(0))
         {

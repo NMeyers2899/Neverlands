@@ -1365,7 +1365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &854790095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1459,6 +1459,8 @@ MonoBehaviour:
   _unitStats:
   - {fileID: 825588087}
   - {fileID: 10157489}
+  _squad: {fileID: 0}
+  _unit: {fileID: 0}
 --- !u!1 &880995381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,9 +1811,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -2990518481384423418, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
-      propertyPath: _units.Array.data[4]
+      propertyPath: _units.Array.data[0]
       value: 
       objectReference: {fileID: 1304451843}
+    - target: {fileID: -2990518481384423418, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
+      propertyPath: _units.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4089402407928003517, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -3311,5 +3317,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7596667354873606742, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
+      propertyPath: _squadViewPanel
+      value: 
+      objectReference: {fileID: 854790098}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
