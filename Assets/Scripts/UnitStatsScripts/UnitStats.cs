@@ -2,57 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitBehavior : MonoBehaviour
+[CreateAssetMenu(fileName = "New Unit Type", menuName = "Unit/Create New Unit Type")]
+public class UnitStats : ScriptableObject
 {
     [SerializeField]
-    [Tooltip("The name of the unit.")]
-    private string _unitName;
+    [Tooltip("The name of the specific unit type.")]
+    private string _unitTypeName;
 
     [SerializeField]
-    [Tooltip("The stats for the given unit.")]
-    private UnitStats _unitClassStats, _unitRaceStats;
-
-    [Tooltip("The combined names of the unit's race and class.")]
-    private string _unitTypes;
-
-    [Tooltip("The current health of the unit. Once it reaches zero, the unit is considered dead.")]
-    private float _currentHealth;
-
     [Tooltip("The maximum possible health of the unit.")]
     private float _maxHealth;
 
+    [SerializeField]
     [Tooltip("How much damage the unit will deal.")]
     private float _attackPower;
 
+    [SerializeField]
     [Tooltip("How resistant the unit is to physical damage.")]
     private float _defensePower;
 
+    [SerializeField]
     [Tooltip("How resistant the unit is to magic damage.")]
     private float _resistancePower;
 
+    [SerializeField]
     [Tooltip("How well the unit is able to dodge incoming attacks.")]
     private float _speedPower;
 
+    [SerializeField]
     [Tooltip("Influences the chance of a unit to hit an opponent.")]
     private float _hitChance;
 
+    [SerializeField]
     [Tooltip("The percentage that stats will increase by on a level up.")]
     private float _healthApptitude, _attackApptitude, _defenseApptitude, _resistanceApptitude, _speedApptitude, _hitApptitude;
 
     /// <summary>
-    /// The name of the unit.
+    /// The name of the specific unit type.
     /// </summary>
-    public string UnitName { get { return _unitName; } }
-
-    /// <summary>
-    /// The combined names of the unit's race and class.
-    /// </summary>
-    public string UnitTypes { get { return _unitTypes; } }
-
-    /// <summary>
-    /// The current health of the unit. Once it reaches zero, the unit is considered dead.
-    /// </summary>
-    public float CurrentHealth { get { return _currentHealth; } }
+    public string UnitTypeName { get { return _unitTypeName; } }
 
     /// <summary>
     /// The maximum possible health of the unit.
@@ -113,27 +101,4 @@ public class UnitBehavior : MonoBehaviour
     /// The percentage that hit will increase upon a level up.
     /// </summary>
     public float HitApptitude { get { return _hitApptitude; } }
-
-    private void Awake()
-    {
-        // Setting up the unit's types.
-        _unitTypes = _unitRaceStats.UnitTypeName + " / " + _unitClassStats.UnitTypeName;
-
-        // Setting up the unit's base stats by combining the class and race stats.
-        _maxHealth = _unitClassStats.MaxHealth + _unitRaceStats.MaxHealth;
-        _currentHealth = _maxHealth;
-        _attackPower = _unitClassStats.AttackPower + _unitRaceStats.AttackPower;
-        _defensePower = _unitClassStats.DefensePower + _unitRaceStats.DefensePower;
-        _resistancePower = _unitClassStats.ResistancePower + _unitRaceStats.ResistancePower;
-        _speedPower = _unitClassStats.ResistancePower + _unitRaceStats.SpeedPower;
-        _hitChance = _unitClassStats.HitChance + _unitRaceStats.HitChance;
-
-        // Setting up the apptitudes for the unit by combining the class and race apptitudes.
-        _healthApptitude = _unitClassStats.HealthApptitude + _unitRaceStats.HealthApptitude;
-        _attackApptitude = _unitClassStats.AttackApptitude + _unitRaceStats.AttackApptitude;
-        _defenseApptitude = _unitClassStats.DefenseApptitude + _unitRaceStats.DefenseApptitude;
-        _resistanceApptitude = _unitClassStats.ResistanceApptitude + _unitRaceStats.ResistanceApptitude;
-        _speedApptitude = _unitClassStats.SpeedApptitude + _unitRaceStats.SpeedApptitude;
-        _hitApptitude = _unitClassStats.HitApptitude + _unitRaceStats.HitApptitude;
-    }
 }

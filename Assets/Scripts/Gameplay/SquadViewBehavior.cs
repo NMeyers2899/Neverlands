@@ -61,7 +61,8 @@ public class SquadViewBehavior : MonoBehaviour
         }
 
         _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +
-                           "\nHealth: " + _unit.CurrentHealth + "/" + _unit.MaxHealth + "\n" +
+                           "\nRace / Class : " + _unit.UnitTypes + "\n" +
+                           "\nHealth: " + _unit.CurrentHealth + " / " + _unit.MaxHealth + "\n" +
                            "\nAttack: " + _unit.AttackPower + "\n" +
                            "\nDefense: " + _unit.DefensePower + "\n" +
                            "\nResistance: " + _unit.ResistancePower + "\n" +

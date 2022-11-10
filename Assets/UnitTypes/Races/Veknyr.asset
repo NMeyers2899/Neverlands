@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241cecc9368a81e41b0b5f8b424655c5, type: 3}
-  m_Name: Vampyr
+  m_Script: {fileID: 11500000, guid: a20f2f1d836be6844bdadbb6a730cd69, type: 3}
+  m_Name: Veknyr
   m_EditorClassIdentifier: 
-  _attackIsMagic: 0
-  _maxHealth: 10
-  _attackPower: 3
-  _defensePower: 3
-  _resistancePower: 3
-  _speedPower: 3
-  _hitChance: 3
+  _unitTypeName: Veknyr
+  _maxHealth: 12
+  _attackPower: 8
+  _defensePower: 5
+  _resistancePower: 5
+  _speedPower: 4
+  _hitChance: 8
   _healthApptitude: 60
   _attackApptitude: 35
-  _defenseApptitude: 20
+  _defenseApptitude: 30
   _resistanceApptitude: 25
   _speedApptitude: 25
-  _hitApptitude: 15
+  _hitApptitude: 20

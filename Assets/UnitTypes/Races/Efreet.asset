@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241cecc9368a81e41b0b5f8b424655c5, type: 3}
+  m_Script: {fileID: 11500000, guid: a20f2f1d836be6844bdadbb6a730cd69, type: 3}
   m_Name: Efreet
   m_EditorClassIdentifier: 
-  _attackIsMagic: 0
-  _maxHealth: 0
-  _attackPower: 0
-  _defensePower: 0
-  _resistancePower: 0
-  _speedPower: 0
-  _hitChance: 0
-  _healthApptitude: 0
-  _attackApptitude: 0
-  _defenseApptitude: 0
-  _resistanceApptitude: 0
-  _speedApptitude: 0
-  _hitApptitude: 0
+  _unitTypeName: Efreet
+  _maxHealth: 9
+  _attackPower: 7
+  _defensePower: 4
+  _resistancePower: 5
+  _speedPower: 8
+  _hitChance: 6
+  _healthApptitude: 55
+  _attackApptitude: 35
+  _defenseApptitude: 25
+  _resistanceApptitude: 30
+  _speedApptitude: 35
+  _hitApptitude: 30

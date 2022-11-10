@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc1353e576f822d489a8a417422b915a, type: 3}
-  m_Name: Brawler
+  m_Name: Intercessor
   m_EditorClassIdentifier: 
-  _unitTypeName: Brawler
+  _unitTypeName: Intercessor
   _maxHealth: 15
-  _attackPower: 9
-  _defensePower: 4
-  _resistancePower: 2
+  _attackPower: 10
+  _defensePower: 3
+  _resistancePower: 4
   _speedPower: 7
-  _hitChance: 7
-  _healthApptitude: 70
-  _attackApptitude: 40
-  _defenseApptitude: 25
-  _resistanceApptitude: 15
-  _speedApptitude: 35
-  _hitApptitude: 30
+  _hitChance: 8
+  _healthApptitude: 35
+  _attackApptitude: 45
+  _defenseApptitude: 20
+  _resistanceApptitude: 30
+  _speedApptitude: 40
+  _hitApptitude: 45
   _attackIsMagic: 0
   _unitType: Infantry

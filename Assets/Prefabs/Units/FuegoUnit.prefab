@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 269941798950833232}
   - component: {fileID: 2691335543165588725}
   m_Layer: 0
-  m_Name: IvanasUnit
+  m_Name: FuegoUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2705525347795c644a1a91a5a5d576ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unitName: Ivanas
-  _unitType: Infantry
-  _unitClassStats: {fileID: 11400000, guid: 01dda136b6d95c849a9edd4ab344199d, type: 2}
-  _unitRaceStats: {fileID: 11400000, guid: 1050600d56e6d1a41829739507fe88fe, type: 2}
+  _unitName: Fuego
+  _unitClassStats: {fileID: 11400000, guid: d5ccc134b5d667c45ae13be87181e1bb, type: 2}
+  _unitRaceStats: {fileID: 11400000, guid: 3580e49e623773845880911654a91bc3, type: 2}
 --- !u!1 &6836518286082609494
 GameObject:
   m_ObjectHideFlags: 0
