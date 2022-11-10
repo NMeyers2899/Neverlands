@@ -29,12 +29,14 @@ public class GameManagerBehavior : MonoBehaviour
             // ...return.
             return;
 
-         // Make the current selected squad that squad.
-         _selectedSquad = selectedSquad.GetComponent<SquadMovementBehavior>();
+        // Make the current selected squad that squad.
+        _selectedSquad = selectedSquad.GetComponent<SquadMovementBehavior>();
 
-         // Set the view panel's squad to the given squad.
-         _squadViewPanel.gameObject.SetActive(true);
-         SquadViewBehavior.Squad = selectedSquad.GetComponent<SquadBehavior>();
+        // Set the view panel's squad to the given squad.
+        _squadViewPanel.gameObject.SetActive(true);
+        SquadViewBehavior.Unit = null;
+        SquadViewBehavior.Squad = selectedSquad.GetComponent<SquadBehavior>();
+       
     }
 
     /// <summary>
@@ -62,7 +64,7 @@ public class GameManagerBehavior : MonoBehaviour
             // ...update the current mouse position, and...
             _mousePosition = Input.mousePosition;
             // ...create a ray to check if something gets hit.
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(_mousePosition);
 
             // Check if something was hit, if it was and you have no squad selected...
             if (Physics.Raycast(ray, out _hit) && _selectedSquad == null)

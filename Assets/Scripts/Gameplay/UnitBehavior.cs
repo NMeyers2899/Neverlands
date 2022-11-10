@@ -9,6 +9,11 @@ public class UnitBehavior : MonoBehaviour
     private string _unitName;
 
     [SerializeField]
+    [Tooltip("The unit's current level.")]
+    [Range(1, 9999)]
+    private int _level = 1;
+
+    [SerializeField]
     [Tooltip("The stats for the given unit.")]
     private UnitStats _unitClassStats, _unitRaceStats;
 
@@ -18,21 +23,27 @@ public class UnitBehavior : MonoBehaviour
     [Tooltip("The current health of the unit. Once it reaches zero, the unit is considered dead.")]
     private float _currentHealth;
 
+    [Range(1, 999999999)]
     [Tooltip("The maximum possible health of the unit.")]
     private float _maxHealth;
 
+    [Range(1, 999999)]
     [Tooltip("How much damage the unit will deal.")]
     private float _attackPower;
 
+    [Range(1, 999999)]
     [Tooltip("How resistant the unit is to physical damage.")]
     private float _defensePower;
 
+    [Range(1, 999999)]
     [Tooltip("How resistant the unit is to magic damage.")]
     private float _resistancePower;
 
+    [Range(1, 999999)]
     [Tooltip("How well the unit is able to dodge incoming attacks.")]
     private float _speedPower;
 
+    [Range(1, 999999)]
     [Tooltip("Influences the chance of a unit to hit an opponent.")]
     private float _hitChance;
 
@@ -43,6 +54,11 @@ public class UnitBehavior : MonoBehaviour
     /// The name of the unit.
     /// </summary>
     public string UnitName { get { return _unitName; } }
+
+    /// <summary>
+    /// The unit's current level.
+    /// </summary>
+    public int Level { get { return _level; } }
 
     /// <summary>
     /// The combined names of the unit's race and class.
@@ -114,6 +130,13 @@ public class UnitBehavior : MonoBehaviour
     /// </summary>
     public float HitApptitude { get { return _hitApptitude; } }
 
+    private void OnLevelUp()
+    {
+        _maxHealth += ((_maxHealth / 2) * ((_unitClassStats.HealthApptitude + _unitRaceStats.HealthApptitude) / 100));
+        _attackPower += ((_attackPower / 2) * ((_unitClassStats.AttackApptitude + _unitRaceStats.AttackApptitude) / 100));
+        _currentHealth = _maxHealth;
+    }
+
     private void Awake()
     {
         // Setting up the unit's types.
@@ -135,5 +158,8 @@ public class UnitBehavior : MonoBehaviour
         _resistanceApptitude = _unitClassStats.ResistanceApptitude + _unitRaceStats.ResistanceApptitude;
         _speedApptitude = _unitClassStats.SpeedApptitude + _unitRaceStats.SpeedApptitude;
         _hitApptitude = _unitClassStats.HitApptitude + _unitRaceStats.HitApptitude;
+
+        for (int i = 1; i < _level; i++)
+            OnLevelUp();
     }
 }

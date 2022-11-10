@@ -24,6 +24,8 @@ public class SquadViewBehavior : MonoBehaviour
     /// </summary>
     public static SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
 
+    public static UnitBehavior Unit { get { return _unit; } set { _unit = value; } }
+
     /// <summary>
     /// Sets the view's unit to a given unit in the squad.
     /// </summary>
@@ -31,6 +33,33 @@ public class SquadViewBehavior : MonoBehaviour
     public static void SetUnit(int position)
     {
         _unit = _squad.Units[position];
+    }
+
+    private void ChangeUnitText()
+    {
+        // If there is no unit currently being looked at, the text boxes are empty.
+        if (!_unit)
+        {
+            _unitStats[0].text = "";
+            _unitStats[1].text = "";
+            return;
+        }
+
+        _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +
+                           "\nRace/Class : " + _unit.UnitTypes + "\n" +
+                           "\nHealth: " + (int)_unit.CurrentHealth + "/" + (int)_unit.MaxHealth + "\n" +
+                           "\nAttack: " + (int)_unit.AttackPower + "\n" +
+                           "\nDefense: " + (int)_unit.DefensePower + "\n" +
+                           "\nResistance: " + (int)_unit.ResistancePower + "\n" +
+                           "\nSpeed: " + (int)_unit.SpeedPower + "\n" +
+                           "\nHit: " + (int)_unit.HitChance;
+
+        _unitStats[1].text = "\nHealth: " + _unit.HealthApptitude + "%\n" +
+                             "\nAttack: " + _unit.AttackApptitude + "%\n" +
+                             "\nDefense: " + _unit.DefenseApptitude + "%\n" +
+                             "\nResistance: " + _unit.ResistanceApptitude + "%\n" +
+                             "\nSpeed: " + _unit.SpeedApptitude + "%\n" +
+                             "\nHit: " + _unit.HitApptitude + "%";
     }
 
     private void Update()
@@ -50,31 +79,8 @@ public class SquadViewBehavior : MonoBehaviour
 
             _unitIcons[i].text = _squad.Units[i].UnitName;
         }
-            
 
-        // If there is no unit currently being looked at, the text boxes are empty.
-        if (!_unit)
-        {
-            _unitStats[0].text = "";
-            _unitStats[1].text = "";
-            return;
-        }
-
-        _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +
-                           "\nRace / Class : " + _unit.UnitTypes + "\n" +
-                           "\nHealth: " + _unit.CurrentHealth + " / " + _unit.MaxHealth + "\n" +
-                           "\nAttack: " + _unit.AttackPower + "\n" +
-                           "\nDefense: " + _unit.DefensePower + "\n" +
-                           "\nResistance: " + _unit.ResistancePower + "\n" +
-                           "\nSpeed: " + _unit.SpeedPower + "\n" +
-                           "\nHit: " + _unit.HitChance;
-
-        _unitStats[1].text = "\nHealth: " + _unit.HealthApptitude + "%\n" +
-                             "\nAttack: " + _unit.AttackApptitude + "%\n" +
-                             "\nDefense: " + _unit.DefenseApptitude + "%\n" +
-                             "\nResistance: " + _unit.ResistanceApptitude + "%\n" +
-                             "\nSpeed: " + _unit.SpeedApptitude + "%\n" +
-                             "\nHit: " + _unit.HitApptitude + "%";
+        ChangeUnitText();
     }
 
 }
