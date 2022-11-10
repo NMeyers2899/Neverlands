@@ -29,16 +29,12 @@ public class GameManagerBehavior : MonoBehaviour
             // ...return.
             return;
 
-        // If the squad is a player squad...
-        if (selectedSquad.CompareTag("Player"))
-            // ...make the current selected squad that squad.
-            _selectedSquad = selectedSquad.GetComponent<SquadMovementBehavior>();
+         // Make the current selected squad that squad.
+         _selectedSquad = selectedSquad.GetComponent<SquadMovementBehavior>();
 
-        if (selectedSquad.GetComponent<SquadBehavior>())
-        {
-            _squadViewPanel.enabled = true;
-            _squadViewPanel.Squad = selectedSquad.GetComponent<SquadBehavior>();
-        }
+         // Set the view panel's squad to the given squad.
+         _squadViewPanel.gameObject.SetActive(true);
+         SquadViewBehavior.Squad = selectedSquad.GetComponent<SquadBehavior>();
     }
 
     /// <summary>
@@ -58,7 +54,7 @@ public class GameManagerBehavior : MonoBehaviour
     void Update()
     {
         if(!_selectedSquad)
-            _squadViewPanel.enabled = false;
+            _squadViewPanel.gameObject.SetActive(false);
 
         // If the player left clicks...
         if (Input.GetMouseButtonDown(0))
@@ -75,7 +71,7 @@ public class GameManagerBehavior : MonoBehaviour
                 SelectSquad(_hit.transform);
             }
             // If the player has a selected squad...
-            else
+            else if(_selectedSquad.CompareTag("Player"))
                 // ...set that squad's target to the hit point.
                 _selectedSquad.TargetPos = _hit.point;
         }

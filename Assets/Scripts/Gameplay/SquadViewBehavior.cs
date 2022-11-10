@@ -13,22 +13,29 @@ public class SquadViewBehavior : MonoBehaviour
     [Tooltip("The text boxes that reference a given unit's stats.")]
     private Text[] _unitStats = new Text[2];
 
-    [SerializeField]
     [Tooltip("The squad this panel is looking at.")]
-    private SquadBehavior _squad;
+    private static SquadBehavior _squad;
 
-    [SerializeField]
     [Tooltip("The unit currently being looked at.")]
-    private UnitBehavior _unit;
+    private static UnitBehavior _unit;
 
     /// <summary>
     /// The squad this panel is looking at.
     /// </summary>
-    public SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
+    public static SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
+
+    /// <summary>
+    /// Sets the view's unit to a given unit in the squad.
+    /// </summary>
+    /// <param name="position"> The position in the squad's array. </param>
+    public static void SetUnit(int position)
+    {
+        _unit = _squad.Units[position];
+    }
 
     private void Update()
     {
-        if(_squad)
+        if(!_squad)
         {
             return;
         }
