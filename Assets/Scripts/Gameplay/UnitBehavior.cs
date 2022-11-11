@@ -23,27 +23,21 @@ public class UnitBehavior : MonoBehaviour
     [Tooltip("The current health of the unit. Once it reaches zero, the unit is considered dead.")]
     private float _currentHealth;
 
-    [Range(1, 999999999)]
     [Tooltip("The maximum possible health of the unit.")]
     private float _maxHealth;
 
-    [Range(1, 999999)]
     [Tooltip("How much damage the unit will deal.")]
     private float _attackPower;
 
-    [Range(1, 999999)]
     [Tooltip("How resistant the unit is to physical damage.")]
     private float _defensePower;
 
-    [Range(1, 999999)]
     [Tooltip("How resistant the unit is to magic damage.")]
     private float _resistancePower;
 
-    [Range(1, 999999)]
     [Tooltip("How well the unit is able to dodge incoming attacks.")]
     private float _speedPower;
 
-    [Range(1, 999999)]
     [Tooltip("Influences the chance of a unit to hit an opponent.")]
     private float _hitChance;
 
@@ -132,9 +126,29 @@ public class UnitBehavior : MonoBehaviour
 
     private void OnLevelUp()
     {
-        _maxHealth += ((_maxHealth / 2) * ((_unitClassStats.HealthApptitude + _unitRaceStats.HealthApptitude) / 100));
-        _attackPower += ((_attackPower / 2) * ((_unitClassStats.AttackApptitude + _unitRaceStats.AttackApptitude) / 100));
-        _currentHealth = _maxHealth;
+        _maxHealth += ((_maxHealth / _level + 70) * ((_unitClassStats.HealthApptitude + _unitRaceStats.HealthApptitude) / 100));
+        if (_maxHealth > 99999999)
+            _maxHealth = 99999999;
+
+        _attackPower += ((_attackPower / _level + 10) * ((_unitClassStats.AttackApptitude + _unitRaceStats.AttackApptitude) / 100));
+        if (_attackPower > 999999)
+            _attackPower = 999999;
+
+        _defensePower += ((_defensePower / _level + 10) * ((_unitClassStats.DefenseApptitude + _unitRaceStats.DefenseApptitude) / 100));
+        if (_defensePower > 999999)
+            _defensePower = 999999;
+
+        _resistancePower += ((_resistancePower / _level + 10) * ((_unitClassStats.ResistanceApptitude + _unitRaceStats.ResistanceApptitude) / 100));
+        if (_resistancePower > 999999)
+            _resistancePower = 999999;
+
+        _speedPower += ((_speedPower / _level + 10) * ((_unitClassStats.SpeedApptitude + _unitRaceStats.SpeedApptitude) / 100));
+        if (_speedPower > 999999)
+            _speedPower = 999999;
+
+        _hitChance += ((_hitChance / _level + 10) * ((_unitClassStats.HitApptitude + _unitRaceStats.HitApptitude) / 100));
+        if (_hitChance > 999999)
+            _hitChance = 999999;
     }
 
     private void Awake()

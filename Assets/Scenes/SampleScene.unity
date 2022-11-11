@@ -273,6 +273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FuegoUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 2691335543165588725, guid: 29736809f240800479db2476883abcbf, type: 3}
+      propertyPath: _level
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29736809f240800479db2476883abcbf, type: 3}
 --- !u!1 &67231767
@@ -1932,10 +1936,6 @@ PrefabInstance:
       propertyPath: _units.Array.data[1]
       value: 
       objectReference: {fileID: 1041175907}
-    - target: {fileID: -2990518481384423418, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
-      propertyPath: _units.Array.data[4]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4089402407928003517, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -2126,7 +2126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2691335543165588725, guid: 2038d585a433d15468f58684541edaa0, type: 3}
       propertyPath: _level
-      value: 296
+      value: 9999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2038d585a433d15468f58684541edaa0, type: 3}
