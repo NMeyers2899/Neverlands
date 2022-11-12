@@ -521,6 +521,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2990518481384423418, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
+      propertyPath: _commanderUnit
+      value: 
+      objectReference: {fileID: 1041175907}
+    - target: {fileID: -2990518481384423418, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
+      propertyPath: _units.Array.data[0]
+      value: 
+      objectReference: {fileID: 1041175907}
     - target: {fileID: 4089402407928003517, guid: e49dfe49e5a54744ea50a45c70d36d70, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -746,6 +754,7 @@ GameObject:
   - component: {fileID: 480228628}
   - component: {fileID: 480228630}
   - component: {fileID: 480228629}
+  - component: {fileID: 480228631}
   m_Layer: 5
   m_Name: TownViewPanel
   m_TagString: Untagged
@@ -822,6 +831,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480228627}
   m_CullTransparentMesh: 1
+--- !u!114 &480228631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480228627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d253cf46ce86054f814574514c1c03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squadIcons:
+  - {fileID: 654067804}
+  - {fileID: 1692502018}
+  - {fileID: 633674375}
+  - {fileID: 391750190}
+  - {fileID: 1230085230}
+  - {fileID: 1931485724}
+  - {fileID: 1489562060}
+  - {fileID: 747391264}
+  - {fileID: 1589354014}
+  - {fileID: 833563797}
+  _townName: {fileID: 375885275}
 --- !u!1 &509326127
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1193481349}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7596667354873606742, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
+        m_TargetAssemblyTypeName: GameManagerBehavior, Assembly-CSharp
+        m_MethodName: SelectSquadFromTown
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1193481349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3279,7 +3324,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1194266523}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7596667354873606742, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
+        m_TargetAssemblyTypeName: GameManagerBehavior, Assembly-CSharp
+        m_MethodName: SelectSquadFromTown
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1194266523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4333,7 +4390,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1525392286}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4754030889794311538, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1525392286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5326,7 +5395,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1778766795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7596667354873606742, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
+        m_TargetAssemblyTypeName: GameManagerBehavior, Assembly-CSharp
+        m_MethodName: SelectSquadFromTown
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1778766795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5843,6 +5924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7596667354873606742, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
+      propertyPath: _townViewPanel
+      value: 
+      objectReference: {fileID: 480228631}
     - target: {fileID: 7596667354873606742, guid: 0e31f0adfd781414491461c57d41c9a7, type: 3}
       propertyPath: _squadViewPanel
       value: 

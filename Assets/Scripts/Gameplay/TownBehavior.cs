@@ -66,7 +66,7 @@ public class TownBehavior : MonoBehaviour
 
         // Has the game manager deselect the squad as long as it is the one the player currently controls.
         if(GameManagerBehavior.SelectedSquad == squad)
-            GameManagerBehavior.DeselectSquad();
+            GameManagerBehavior.DeselectObject();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -79,7 +79,7 @@ public class TownBehavior : MonoBehaviour
             return;
 
         // If the squad shares a tag with this town, perform the logic for adding it to the town.
-        if (squad.CompareTag(tag) || _nestedSquads.Count <= 10)
+        if (squad.CompareTag(tag))
             OnAdd(squad);
         // If the squad is not a part of the same faction...
         else if (!squad.CompareTag(tag) && _nestedSquads.Count == 0)

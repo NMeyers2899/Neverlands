@@ -8,6 +8,7 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("The squad that the player has currently selected.")]
     private static SquadMovementBehavior _selectedSquad;
 
+    [Tooltip("The town that the player has currently selected.")]
     private static TownBehavior _selectedTown;
 
     [Tooltip("The object that will be hit with a ray.")]
@@ -25,24 +26,36 @@ public class GameManagerBehavior : MonoBehaviour
     private TownViewBehavior _townViewPanel;
 
     /// <summary>
-    /// Handles the logic that occurs when a unit is selected.
+    /// Handles the logic that occurs when n object is selected.
     /// </summary>
-    /// <param name="selectedSquad"> The squad that has been selected by the player. </param>
-    public void SelectSquad(Transform selectedSquad)
+    /// <param name="selectedObject"> The object that has been selected by the player. </param>
+    public void PlayerSelect(Transform selectedObject)
     {
-        // If the object was not a squad...
-        if (!selectedSquad.GetComponent<SquadMovementBehavior>())
-            // ...return.
+        // If the object is a squad...
+        if (selectedObject.GetComponent<SquadMovementBehavior>())
+        {
+            // Make the current selected squad that squad.
+            _selectedSquad = selectedObject.GetComponent<SquadMovementBehavior>();
+
+            // Make sure that the town panel is set false.
+            _selectedTown = null;
+            // Set the view panel's squad to the given squad.
+            _squadViewPanel.gameObject.SetActive(true);
+            SquadViewBehavior.Unit = null;
+            SquadViewBehavior.Squad = selectedObject.GetComponent<SquadBehavior>();
+
             return;
+        }
 
-        // Make the current selected squad that squad.
-        _selectedSquad = selectedSquad.GetComponent<SquadMovementBehavior>();
+        if(selectedObject.GetComponent<TownBehavior>())
+        {
+            // Set the selected town to the given town.
+            _selectedTown = selectedObject.GetComponent<TownBehavior>();
 
-        // Set the view panel's squad to the given squad.
-        _squadViewPanel.gameObject.SetActive(true);
-        SquadViewBehavior.Unit = null;
-        SquadViewBehavior.Squad = selectedSquad.GetComponent<SquadBehavior>();
-       
+            _selectedSquad = null;
+            _townViewPanel.gameObject.SetActive(true);
+            TownViewBehavior.Town = _selectedTown;
+        }
     }
 
     /// <summary>
@@ -53,9 +66,19 @@ public class GameManagerBehavior : MonoBehaviour
     /// <summary>
     /// Handles the logic that occurs when a unit is deselected.
     /// </summary>
-    public static void DeselectSquad()
+    public static void DeselectObject()
     {
         _selectedSquad = null;
+        _selectedTown = null;
+    }
+
+    /// <summary>
+    /// Allows the user to select a squad in a given position from a town.
+    /// </summary>
+    public static void SelectSquadFromTown(int position)
+    {
+        _selectedSquad = _selectedTown.NestedSquads[position].GetComponent<SquadMovementBehavior>();
+        _selectedTown = null;
     }
 
     // Update is called once per frame
@@ -63,6 +86,9 @@ public class GameManagerBehavior : MonoBehaviour
     {
         if(!_selectedSquad)
             _squadViewPanel.gameObject.SetActive(false);
+
+        if (!_selectedTown)
+            _townViewPanel.gameObject.SetActive(false);
 
         // If the player left clicks...
         if (Input.GetMouseButtonDown(0))
@@ -73,19 +99,21 @@ public class GameManagerBehavior : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(_mousePosition);
 
             // Check if something was hit, if it was and you have no squad selected...
-            if (Physics.Raycast(ray, out _hit) && _selectedSquad == null)
+            if (Physics.Raycast(ray, out _hit) && !_selectedSquad && !_selectedTown)
             {
                 // ...run the SelectSquad function, giving it the transform of what was hit.
-                SelectSquad(_hit.transform);
+                PlayerSelect(_hit.transform);
+                return;
             }
+
             // If the player has a selected squad...
             else if(_selectedSquad.CompareTag("Player"))
                 // ...set that squad's target to the hit point.
-                _selectedSquad.TargetPos = _hit.point;
+                _selectedSquad.TargetPos = _hit.point;  
         }
         
         // If the player right clicks, deselect the current unit.
         if (Input.GetMouseButtonDown(1))
-            DeselectSquad();
+            DeselectObject();
     }
 }

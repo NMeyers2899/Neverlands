@@ -10,12 +10,17 @@ public class TownViewBehavior : MonoBehaviour
     private Text[] _squadIcons = new Text[10];
 
     [SerializeField]
-    [Tooltip("The name of the given town.")]
+    [Tooltip("The text box that reveals the name of the town.")]
     private Text _townName;
 
     [SerializeField]
     [Tooltip("The town that the panel is currently viewing.")]
     private static TownBehavior _town;
+
+    /// <summary>
+    /// The town that the panel is currently viewing.
+    /// </summary>
+    public static TownBehavior Town { get { return _town; }  set { _town = value; } }
 
     private void Update()
     {
@@ -26,6 +31,9 @@ public class TownViewBehavior : MonoBehaviour
 
         for(int i = 0; i < _town.NestedSquads.Count; i++)
         {
+            if (!_town.NestedSquads[i])
+                _squadIcons[i].text = "";
+
             _squadIcons[i].text = _town.NestedSquads[i].GetComponent<SquadBehavior>().CommanderUnit.UnitName;
         }
     }
