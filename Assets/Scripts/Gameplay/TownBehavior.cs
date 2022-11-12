@@ -5,6 +5,10 @@ using UnityEngine;
 public class TownBehavior : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("The name of the town.")]
+    private string _townName;
+
+    [SerializeField]
     [Tooltip("The tag that represents which faction currently controls the town (for inital map setup).")]
     private string _factionTag;
 
@@ -19,6 +23,11 @@ public class TownBehavior : MonoBehaviour
     [SerializeField]
     [Tooltip("The squads that are currently within the town.")]
     private List<GameObject> _nestedSquads;
+
+    /// <summary>
+    /// The name of the town.
+    /// </summary>
+    public string TownName { get { return _townName; } }
 
     /// <summary>
     /// The squads that are currently within the town.
@@ -70,9 +79,8 @@ public class TownBehavior : MonoBehaviour
             return;
 
         // If the squad shares a tag with this town, perform the logic for adding it to the town.
-        if (squad.CompareTag(tag))
+        if (squad.CompareTag(tag) || _nestedSquads.Count <= 10)
             OnAdd(squad);
-
         // If the squad is not a part of the same faction...
         else if (!squad.CompareTag(tag) && _nestedSquads.Count == 0)
         {

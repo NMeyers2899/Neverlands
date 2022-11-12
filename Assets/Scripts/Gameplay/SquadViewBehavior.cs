@@ -24,6 +24,9 @@ public class SquadViewBehavior : MonoBehaviour
     /// </summary>
     public static SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
 
+    /// <summary>
+    /// The unit currently being looked at.
+    /// </summary>
     public static UnitBehavior Unit { get { return _unit; } set { _unit = value; } }
 
     /// <summary>
@@ -75,6 +78,12 @@ public class SquadViewBehavior : MonoBehaviour
             if (!_squad.Units[i])
             {
                 _unitIcons[i].text = "";
+                continue;
+            }
+
+            if(_squad.Units[i] == _squad.CommanderUnit)
+            {
+                _unitIcons[i].text = "*C* " + _squad.Units[i].UnitName;
                 continue;
             }
 

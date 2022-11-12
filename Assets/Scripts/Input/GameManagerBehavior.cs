@@ -8,6 +8,8 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("The squad that the player has currently selected.")]
     private static SquadMovementBehavior _selectedSquad;
 
+    private static TownBehavior _selectedTown;
+
     [Tooltip("The object that will be hit with a ray.")]
     private RaycastHit _hit;
 
@@ -15,8 +17,12 @@ public class GameManagerBehavior : MonoBehaviour
     private Vector3 _mousePosition;
 
     [SerializeField]
-    [Tooltip("The panel that will display a squad, town, or unit's stats.")]
+    [Tooltip("The panel that will display a squad or unit's stats.")]
     private SquadViewBehavior _squadViewPanel;
+
+    [SerializeField]
+    [Tooltip("The panel that will display a town's stats and the squads within.")]
+    private TownViewBehavior _townViewPanel;
 
     /// <summary>
     /// Handles the logic that occurs when a unit is selected.

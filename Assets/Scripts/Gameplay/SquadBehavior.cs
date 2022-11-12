@@ -16,4 +16,15 @@ public class SquadBehavior : MonoBehaviour
     /// The list of units within this squad.
     /// </summary>
     public UnitBehavior[] Units { get { return _units; } }
+
+    /// <summary>
+    /// The commanding unit of the squad. If they die in battle, the squad is defeated.
+    /// </summary>
+    public UnitBehavior CommanderUnit { get { return _commanderUnit; } }
+
+    private void Update()
+    {
+        if (!_commanderUnit || _commanderUnit.CurrentHealth <= 0)
+            Destroy(gameObject);
+    }
 }
