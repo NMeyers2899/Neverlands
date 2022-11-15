@@ -2,6 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct UnitData
+{
+    [Header("Base Stats")]
+    [Tooltip("The maximum health of the unit.")]
+    [Range(1, 20)]
+    public float MaxHealth;
+
+    [Tooltip("The attack power of the unit.")]
+    [Range(1, 20)]
+    public float AttackPower;
+
+    [Tooltip("The magic power of the unit.")]
+    [Range(1, 20)]
+    public float MagicPower;
+
+    [Tooltip("The defense power of the unit. Meant to resist another unit's attack.")]
+    [Range(1, 20)]
+    public float DefensePower;
+
+    [Tooltip("The resistance power of the unit. Meant to resist another unit's magic.")]
+    [Range(1, 20)]
+    public float ResistancePower;
+
+    [Tooltip("The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.")]
+    [Range(1, 20)]
+    public float SkillPower;
+
+    [Header("Apptitudes")]
+    [Tooltip("How much (calculated by a percentage) health will be increased on a level up.")]
+    [Range(1, 100)]
+    public float HealthApptitude;
+
+    [Tooltip("How much (calculated by a percentage) attack will be increased on a level up.")]
+    [Range(1, 100)]
+    public float AttackApptitude;
+    
+    [Tooltip("How much (calculated by a percentage) magic will be increased on a level up.")]
+    [Range(1, 100)]
+    public float MagicApptitude;
+
+    [Tooltip("How much (calculated by a percentage) defense will be increased on a level up.")]
+    [Range(1, 100)]
+    public float DefenseApptitude;
+
+    [Tooltip("How much (calculated by a percentage) resistance will be increased on a level up.")]
+    [Range(1, 100)]
+    public float ResistanceApptitude;
+
+    [Tooltip("How much (calculated by a percentage) skill will be increased on a level up.")]
+    [Range(1, 100)]
+    public float SkillApptitude;
+
+
+}
+
 [CreateAssetMenu(fileName = "New Unit Type", menuName = "Unit/Create New Unit Type")]
 public class UnitStats : ScriptableObject
 {
@@ -10,95 +66,46 @@ public class UnitStats : ScriptableObject
     private string _unitTypeName;
 
     [SerializeField]
-    [Tooltip("The maximum possible health of the unit.")]
-    private float _maxHealth;
+    private float[] _unitBaseStats = new float[6];
 
     [SerializeField]
-    [Tooltip("How much damage the unit will deal.")]
-    private float _attackPower;
+    [Tooltip("The following determines the rate at which each stat will grow for a unit during a level up (calculated as a percentage).\n" +
+             "0 : The maximum health of the unit.\n" +
+             "1 : The attack power of the unit.\n" +
+             "2 : The magic power of the unit.\n" +
+             "3 : The defense power of the unit. Meant to resist another unit's attack.\n" +
+             "4 : The resistance power of the unit. Meant to resist another unit's magic.\n" +
+             "5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.")]
+    [Range(1, 100)]
+    private float[] _unitStatApptitudes = new float[6];
 
     [SerializeField]
-    [Tooltip("How resistant the unit is to physical damage.")]
-    private float _defensePower;
-
-    [SerializeField]
-    [Tooltip("How resistant the unit is to magic damage.")]
-    private float _resistancePower;
-
-    [SerializeField]
-    [Tooltip("How well the unit is able to dodge incoming attacks.")]
-    private float _speedPower;
-
-    [SerializeField]
-    [Tooltip("Influences the chance of a unit to hit an opponent.")]
-    private float _hitChance;
-
-    [SerializeField]
-    [Tooltip("The percentage that stats will increase by on a level up.")]
-    private float _healthApptitude, _attackApptitude, _defenseApptitude, _resistanceApptitude, _speedApptitude, _hitApptitude;
+    private UnitData _unitData;
 
     /// <summary>
     /// The name of the specific unit type.
     /// </summary>
-    public string UnitTypeName { get { return _unitTypeName; } }
+    public string UnitTypeName { get { return _unitTypeName;} }
 
     /// <summary>
-    /// The maximum possible health of the unit.
+    /// The base stats of a given unit type, which represent the following. 
+    /// 0 : The maximum health of the unit.
+    /// 1 : The attack power of the unit.
+    /// 2 : The magic power of the unit.
+    /// 3 : The defense power of the unit. Meant to resist another unit's attack.
+    /// 4 : The resistance power of the unit. Meant to resist another unit's magic.
+    /// 5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.
     /// </summary>
-    public float MaxHealth { get { return _maxHealth; } }
+    public float[] UnitBaseStats { get { return _unitBaseStats; } }
 
     /// <summary>
-    /// How much damage the unit will deal.
+    /// The following determines the rate at which each stat will grow for a unit during a level up (calculated as a percentage).
+    /// 0 : The maximum health of the unit.
+    /// 1 : The attack power of the unit.
+    /// 2 : The magic power of the unit.
+    /// 3 : The defense power of the unit. Meant to resist another unit's attack.
+    /// 4 : The resistance power of the unit. Meant to resist another unit's magic.
+    /// 5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.
     /// </summary>
-    public float AttackPower { get { return _attackPower; } }
-
-    /// <summary>
-    /// How resistant the unit is to physical damage.
-    /// </summary>
-    public float DefensePower { get { return _defensePower; } }
-
-    /// <summary>
-    /// How resistant the unit is to magic damage.
-    /// </summary>
-    public float ResistancePower { get { return _resistancePower; } }
-
-    /// <summary>
-    /// How well the unit is able to dodge incoming attacks.
-    /// </summary>
-    public float SpeedPower { get { return _speedPower; } }
-
-    /// <summary>
-    /// Influences the chance of a unit to hit an opponent.
-    /// </summary>
-    public float HitChance { get { return _hitChance; } }
-
-    /// <summary>
-    /// The percentage that health will increase upon a level up.
-    /// </summary>
-    public float HealthApptitude { get { return _healthApptitude; } }
-
-    /// <summary>
-    /// The percentage that attack will increase upon a level up.
-    /// </summary>
-    public float AttackApptitude { get { return _attackApptitude; } }
-
-    /// <summary>
-    /// The percentage that defense will increase upon a level up.
-    /// </summary>
-    public float DefenseApptitude { get { return _defenseApptitude; } }
-
-    /// <summary>
-    /// The percentage that resistance will increase upon a level up.
-    /// </summary>
-    public float ResistanceApptitude { get { return _resistanceApptitude; } }
-
-    /// <summary>
-    /// The percentage that speed will increase upon a level up.
-    /// </summary>
-    public float SpeedApptitude { get { return _speedApptitude; } }
-
-    /// <summary>
-    /// The percentage that hit will increase upon a level up.
-    /// </summary>
-    public float HitApptitude { get { return _hitApptitude; } }
+    public float[] UnitStatApptitudes { get { return _unitStatApptitudes; } }
 }

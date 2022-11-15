@@ -13,17 +13,19 @@ MonoBehaviour:
   m_Name: Fighter
   m_EditorClassIdentifier: 
   _unitTypeName: Fighter
-  _maxHealth: 15
-  _attackPower: 10
-  _defensePower: 3
-  _resistancePower: 4
-  _speedPower: 7
-  _hitChance: 8
-  _healthApptitude: 35
-  _attackApptitude: 45
-  _defenseApptitude: 20
-  _resistanceApptitude: 30
-  _speedApptitude: 40
-  _hitApptitude: 45
+  _unitBaseStats:
+  - 10
+  - 7
+  - 4
+  - 5
+  - 4
+  - 6
+  _unitStatApptitudes:
+  - 60
+  - 35
+  - 20
+  - 30
+  - 20
+  - 35
   _attackIsMagic: 0
   _unitType: Infantry

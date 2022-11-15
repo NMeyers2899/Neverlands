@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Magigunner
   m_EditorClassIdentifier: 
   _unitTypeName: Magigunner
-  _maxHealth: 8
-  _attackPower: 10
-  _defensePower: 3
-  _resistancePower: 4
-  _speedPower: 4
-  _hitChance: 6
-  _healthApptitude: 40
-  _attackApptitude: 35
-  _defenseApptitude: 20
-  _resistanceApptitude: 25
-  _speedApptitude: 25
-  _hitApptitude: 20
-  _attackIsMagic: 1
+  _unitBaseStats:
+  - 8
+  - 4
+  - 6
+  - 3
+  - 4
+  - 6
+  _unitStatApptitudes:
+  - 50
+  - 20
+  - 45
+  - 20
+  - 25
+  - 25
   _unitType: Infantry
