@@ -32,11 +32,8 @@ public class GameManagerBehavior : MonoBehaviour
     public void PlayerSelect(Transform selectedObject)
     {
         // If the object is a squad...
-        if (selectedObject.GetComponent<SquadMovementBehavior>())
+        if (selectedObject.TryGetComponent(out _selectedSquad))
         {
-            // Make the current selected squad that squad.
-            _selectedSquad = selectedObject.GetComponent<SquadMovementBehavior>();
-
             // Make sure that the town panel is set false.
             _selectedTown = null;
             // Set the view panel's squad to the given squad.

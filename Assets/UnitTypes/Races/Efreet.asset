@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Efreet
   m_EditorClassIdentifier: 
   _unitTypeName: Efreet
-  _maxHealth: 9
-  _attackPower: 7
-  _defensePower: 4
-  _resistancePower: 5
-  _speedPower: 8
-  _hitChance: 6
-  _healthApptitude: 55
-  _attackApptitude: 35
-  _defenseApptitude: 25
-  _resistanceApptitude: 30
-  _speedApptitude: 35
-  _hitApptitude: 30
+  _unitBaseStats:
+  - 10
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  _unitStatApptitudes:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0

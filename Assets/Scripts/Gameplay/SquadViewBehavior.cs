@@ -33,7 +33,7 @@ public class SquadViewBehavior : MonoBehaviour
     /// Sets the view's unit to a given unit in the squad.
     /// </summary>
     /// <param name="position"> The position in the squad's array. </param>
-    public static void SetUnit(int position)
+    public void SetUnit(int position)
     {
         _unit = _squad.Units[position];
     }
@@ -51,19 +51,19 @@ public class SquadViewBehavior : MonoBehaviour
         _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +
                            "\nLevel : " + _unit.Level + "\n" +
                            "\nRace/Class : " + _unit.UnitTypes + "\n" +
-                           "\nHealth: " + (int)_unit.CurrentHealth + "/" + (int)_unit.MaxHealth + "\n" +
-                           "\nAttack: " + (int)_unit.AttackPower + "\n" +
-                           "\nDefense: " + (int)_unit.DefensePower + "\n" +
-                           "\nResistance: " + (int)_unit.ResistancePower + "\n" +
-                           "\nSpeed: " + (int)_unit.SpeedPower + "\n" +
-                           "\nHit: " + (int)_unit.HitChance;
+                           "\nHealth: " + (int)_unit.CurrentHealth + "/" + (int)_unit.UnitStats[0] + "\n" +
+                           "\nAttack: " + (int)_unit.UnitStats[1] + "\n" +
+                           "\nMagic: " + (int)_unit.UnitStats[2] + "\n" +
+                           "\nDefense: " + (int)_unit.UnitStats[3] + "\n" +
+                           "\nResistance: " + (int)_unit.UnitStats[4] + "\n" +
+                           "\nSkill: " + (int)_unit.UnitStats[5];
 
-        _unitStats[1].text = "\nHealth: " + _unit.HealthApptitude + "%\n" +
-                             "\nAttack: " + _unit.AttackApptitude + "%\n" +
-                             "\nDefense: " + _unit.DefenseApptitude + "%\n" +
-                             "\nResistance: " + _unit.ResistanceApptitude + "%\n" +
-                             "\nSpeed: " + _unit.SpeedApptitude + "%\n" +
-                             "\nHit: " + _unit.HitApptitude + "%";
+        _unitStats[1].text = "\nHealth: " + _unit.UnitStatApptitudes[0] + "%\n" +
+                             "\nAttack: " + _unit.UnitStatApptitudes[1] + "%\n" +
+                             "\nMagic: " + _unit.UnitStatApptitudes[2] + "%\n" +
+                             "\nDefense: " + _unit.UnitStatApptitudes[3] + "%\n" +
+                             "\nResistance: " + _unit.UnitStatApptitudes[4] + "%\n" +
+                             "\nSkill: " + _unit.UnitStatApptitudes[5] + "%";
     }
 
     private void Update()
