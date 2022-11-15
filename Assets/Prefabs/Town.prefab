@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb407013dc6004188de5c5b7b01ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _townName: 
   _factionTag: Neutral
   _factionIcon: {fileID: 4600416350250204434}
   PlayerFactionMaterial: {fileID: 2100000, guid: 5c9f79734a4b6a64a81c4f329bd374b6, type: 2}

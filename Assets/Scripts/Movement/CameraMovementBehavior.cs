@@ -26,13 +26,13 @@ public class CameraMovementBehavior : MonoBehaviour
         Vector3 currentPosition = transform.position;
 
         // Gets input from the user based on their mouse position or the keys they input.
-        if (Input.GetKey(KeyCode.W) || Input.mousePosition.y >= Screen.height - _panBorderDistance)
+        if (Input.GetKey(KeyCode.W)) /*|| Input.mousePosition.y >= Screen.height - _panBorderDistance)*/
             currentPosition.z += _panSpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.S) || Input.mousePosition.y <= _panBorderDistance)
+        if (Input.GetKey(KeyCode.S)) /*|| Input.mousePosition.y <= _panBorderDistance)*/
             currentPosition.z -= _panSpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.D) || Input.mousePosition.x >= Screen.width - _panBorderDistance)
+        if (Input.GetKey(KeyCode.D)) /*|| Input.mousePosition.x >= Screen.width - _panBorderDistance)*/
             currentPosition.x += _panSpeed * Time.deltaTime;
-        if (Input.GetKey(KeyCode.A) || Input.mousePosition.x <= _panBorderDistance)
+        if (Input.GetKey(KeyCode.A)) /*|| Input.mousePosition.x <= _panBorderDistance)*/
             currentPosition.x -= _panSpeed * Time.deltaTime;
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");

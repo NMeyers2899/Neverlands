@@ -61,9 +61,9 @@ public class UnitBehavior : MonoBehaviour
     private void OnLevelUp()
     {
         // Provides the formula for each individual stat to increase by.
-        _unitStats.MaxHealth += ((_unitStats.MaxHealth / _level + 70) * ((_unitStats.HealthApptitude) / 100));
-        if (_unitStats.MaxHealth > 999999999)
-            _unitStats.MaxHealth = 999999999;
+        _unitStats.MaxHealth += ((_unitStats.MaxHealth / _level + 40) * ((_unitStats.HealthApptitude) / 100));
+        if (_unitStats.MaxHealth > 9999999)
+            _unitStats.MaxHealth = 9999999;
         
         _unitStats.AttackPower += ((_unitStats.AttackPower / _level + 10) * ((_unitStats.AttackApptitude) / 100));
         if (_unitStats.AttackPower > 999999)

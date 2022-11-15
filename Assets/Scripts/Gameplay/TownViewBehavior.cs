@@ -29,12 +29,12 @@ public class TownViewBehavior : MonoBehaviour
 
         _townName.text = _town.TownName;
 
-        for(int i = 0; i < _town.NestedSquads.Count; i++)
+        for(int i = 0; i < _town.NestedSquads.Length; i++)
         {
             if (!_town.NestedSquads[i])
                 _squadIcons[i].text = "";
 
-            _squadIcons[i].text = _town.NestedSquads[i].GetComponent<SquadBehavior>().CommanderUnit.UnitName;
+            _squadIcons[i].text = _town.NestedSquads[i].CommanderUnit.UnitName;
         }
     }
 }

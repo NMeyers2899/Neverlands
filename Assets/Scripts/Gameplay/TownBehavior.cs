@@ -22,7 +22,7 @@ public class TownBehavior : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The squads that are currently within the town.")]
-    private List<GameObject> _nestedSquads;
+    private SquadBehavior[] _nestedSquads = new SquadBehavior[10];
 
     /// <summary>
     /// The name of the town.
@@ -32,7 +32,7 @@ public class TownBehavior : MonoBehaviour
     /// <summary>
     /// The squads that are currently within the town.
     /// </summary>
-    public List<GameObject> NestedSquads { get { return _nestedSquads; } }
+    public SquadBehavior[] NestedSquads { get { return _nestedSquads; } }
 
     private void Awake()
     {
@@ -44,22 +44,26 @@ public class TownBehavior : MonoBehaviour
             _factionIcon.material = NeutralFactionMaterial;
         else if (tag == "Enemy")
             _factionIcon.material = EnemyFactionMaterial;
-
-        _nestedSquads = new List<GameObject>();
     }
 
     /// <summary>
     /// Performs the logic for adding a squad to this town.
     /// </summary>
     /// <param name="squad"> The squad being added. </param>
-    private void OnAdd(SquadMovementBehavior squad)
+    private void OnAdd(SquadBehavior squad)
     {
-        // Add the squad to this town's list.
-        _nestedSquads.Add(squad.gameObject);
+        // Add the squad to this town's next open spot.
+        for(int i = 0; i < _nestedSquads.Length; i++)
+        {
+            if (!_nestedSquads[i])
+            {
+                _nestedSquads[i] = squad;
+                break;
+            }
+        }
 
         // Change the location of the object, and disable it.
         squad.transform.position = transform.position;
-        squad.TargetPos = transform.position;
 
         // Disable the squad's collider while it is in the town.
         squad.gameObject.SetActive(false);
@@ -72,7 +76,7 @@ public class TownBehavior : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Checks to see if the other object is a squad.
-        SquadMovementBehavior squad = collision.gameObject.GetComponent<SquadMovementBehavior>();
+        SquadBehavior squad = collision.gameObject.GetComponent<SquadBehavior>();
 
         // If not, don't do anything.
         if (!squad)
@@ -82,7 +86,7 @@ public class TownBehavior : MonoBehaviour
         if (squad.CompareTag(tag))
             OnAdd(squad);
         // If the squad is not a part of the same faction...
-        else if (!squad.CompareTag(tag) && _nestedSquads.Count == 0)
+        else if (!squad.CompareTag(tag) && _nestedSquads.Length == 0)
         {
             // ...change the material of the icon depending on which faction is taking the town.
             if (squad.tag == "Player")
