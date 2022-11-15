@@ -13,15 +13,34 @@ MonoBehaviour:
   m_Name: Machina
   m_EditorClassIdentifier: 
   _unitTypeName: Machina
-  _maxHealth: 14
-  _attackPower: 5
-  _defensePower: 6
-  _resistancePower: 6
-  _speedPower: 2
-  _hitChance: 5
-  _healthApptitude: 60
-  _attackApptitude: 25
-  _defenseApptitude: 35
-  _resistanceApptitude: 35
-  _speedApptitude: 20
-  _hitApptitude: 30
+  _unitBaseStats:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  _unitStatApptitudes:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  _unitTypeData:
+    UnitTypeName: Machina
+    UnitTypeDescription: Born from Great Forges that can be found on a number of
+      worlds, these sentient automatons are able to function perfectly well with
+      other mortals.
+    MaxHealth: 14
+    AttackPower: 4
+    MagicPower: 4
+    DefensePower: 6
+    ResistancePower: 7
+    SkillPower: 4
+    HealthApptitude: 65
+    AttackApptitude: 25
+    MagicApptitude: 25
+    DefenseApptitude: 30
+    ResistanceApptitude: 35
+    SkillApptitude: 25

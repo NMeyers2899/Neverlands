@@ -27,3 +27,19 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  _unitTypeData:
+    UnitTypeName: Efreet
+    UnitTypeDescription: A mortal form of the fire element. Able to produce flames
+      by manipulating the mana around them.
+    MaxHealth: 13
+    AttackPower: 5
+    MagicPower: 6
+    DefensePower: 4
+    ResistancePower: 5
+    SkillPower: 4
+    HealthApptitude: 45
+    AttackApptitude: 30
+    MagicApptitude: 35
+    DefenseApptitude: 25
+    ResistanceApptitude: 30
+    SkillApptitude: 30

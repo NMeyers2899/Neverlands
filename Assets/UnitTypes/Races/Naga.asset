@@ -10,37 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a20f2f1d836be6844bdadbb6a730cd69, type: 3}
-  m_Name: Veknyr
+  m_Name: Naga
   m_EditorClassIdentifier: 
-  _unitTypeName: Veknyr
-  _unitBaseStats:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  _unitStatApptitudes:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
   _unitTypeData:
-    UnitTypeName: Veknyr
-    UnitTypeDescription: Their ability to drain the health of others to increase
-      their own strength has damaged their reputation. Leading to them being feared
-      and worshipped across the Neverlands.
+    UnitTypeName: Naga
+    UnitTypeDescription: Amphibius and reptilian, they make both coasts and the waters
+      that surround them their home. Though they have adapted well to living purely
+      on land as well.
     MaxHealth: 12
     AttackPower: 6
-    MagicPower: 4
+    MagicPower: 5
     DefensePower: 4
-    ResistancePower: 4
-    SkillPower: 5
+    ResistancePower: 7
+    SkillPower: 4
     HealthApptitude: 55
-    AttackApptitude: 30
-    MagicApptitude: 30
+    AttackApptitude: 35
+    MagicApptitude: 20
     DefenseApptitude: 25
-    ResistanceApptitude: 30
+    ResistanceApptitude: 35
     SkillApptitude: 25

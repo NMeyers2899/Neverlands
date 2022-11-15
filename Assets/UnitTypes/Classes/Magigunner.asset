@@ -27,4 +27,21 @@ MonoBehaviour:
   - 20
   - 25
   - 25
+  _unitTypeData:
+    UnitTypeName: Magigunner
+    UnitTypeDescription: Able to use different types of magic to create an explosion,
+      they are fairly powerful attackers. Though their survivability leaves something
+      to be desired.
+    MaxHealth: 11
+    AttackPower: 3
+    MagicPower: 8
+    DefensePower: 3
+    ResistancePower: 4
+    SkillPower: 6
+    HealthApptitude: 50
+    AttackApptitude: 20
+    MagicApptitude: 45
+    DefenseApptitude: 20
+    ResistanceApptitude: 25
+    SkillApptitude: 25
   _unitType: Infantry

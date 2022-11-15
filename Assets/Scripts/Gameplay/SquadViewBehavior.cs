@@ -51,19 +51,19 @@ public class SquadViewBehavior : MonoBehaviour
         _unitStats[0].text = "Name: " + _unit.UnitName + "\n" +
                            "\nLevel : " + _unit.Level + "\n" +
                            "\nRace/Class : " + _unit.UnitTypes + "\n" +
-                           "\nHealth: " + (int)_unit.CurrentHealth + "/" + (int)_unit.UnitStats[0] + "\n" +
-                           "\nAttack: " + (int)_unit.UnitStats[1] + "\n" +
-                           "\nMagic: " + (int)_unit.UnitStats[2] + "\n" +
-                           "\nDefense: " + (int)_unit.UnitStats[3] + "\n" +
-                           "\nResistance: " + (int)_unit.UnitStats[4] + "\n" +
-                           "\nSkill: " + (int)_unit.UnitStats[5];
+                           "\nHealth: " + (int)_unit.CurrentHealth + "/" + (int)_unit.UnitStats.MaxHealth + "\n" +
+                           "\nAttack: " + (int)_unit.UnitStats.AttackPower + "\n" +
+                           "\nMagic: " + (int)_unit.UnitStats.MagicPower + "\n" +
+                           "\nDefense: " + (int)_unit.UnitStats.DefensePower + "\n" +
+                           "\nResistance: " + (int)_unit.UnitStats.ResistancePower + "\n" +
+                           "\nSkill: " + (int)_unit.UnitStats.SkillPower;
 
-        _unitStats[1].text = "\nHealth: " + _unit.UnitStatApptitudes[0] + "%\n" +
-                             "\nAttack: " + _unit.UnitStatApptitudes[1] + "%\n" +
-                             "\nMagic: " + _unit.UnitStatApptitudes[2] + "%\n" +
-                             "\nDefense: " + _unit.UnitStatApptitudes[3] + "%\n" +
-                             "\nResistance: " + _unit.UnitStatApptitudes[4] + "%\n" +
-                             "\nSkill: " + _unit.UnitStatApptitudes[5] + "%";
+        _unitStats[1].text = "\nHealth: " + _unit.UnitStats.HealthApptitude + "%\n" +
+                             "\nAttack: " + _unit.UnitStats.AttackApptitude + "%\n" +
+                             "\nMagic: " + _unit.UnitStats.MagicApptitude + "%\n" +
+                             "\nDefense: " + _unit.UnitStats.DefenseApptitude + "%\n" +
+                             "\nResistance: " + _unit.UnitStats.ResistanceApptitude + "%\n" +
+                             "\nSkill: " + _unit.UnitStats.SkillApptitude + "%";
     }
 
     private void Update()

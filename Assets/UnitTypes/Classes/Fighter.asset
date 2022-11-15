@@ -27,5 +27,20 @@ MonoBehaviour:
   - 30
   - 20
   - 35
-  _attackIsMagic: 0
+  _unitTypeData:
+    UnitTypeName: Fighter
+    UnitTypeDescription: A close-range attacker that focuses on being decent all
+      around.
+    MaxHealth: 13
+    AttackPower: 7
+    MagicPower: 4
+    DefensePower: 5
+    ResistancePower: 4
+    SkillPower: 6
+    HealthApptitude: 60
+    AttackApptitude: 35
+    MagicApptitude: 20
+    DefenseApptitude: 30
+    ResistanceApptitude: 20
+    SkillApptitude: 35
   _unitType: Infantry

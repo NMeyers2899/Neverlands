@@ -27,5 +27,20 @@ MonoBehaviour:
   - 25
   - 10
   - 40
-  _attackIsMagic: 0
+  _unitTypeData:
+    UnitTypeName: Brawler
+    UnitTypeDescription: Using their fists for combat, brawlers are powerful physical
+      attackers. Their high health is a testament to their strong will.
+    MaxHealth: 18
+    AttackPower: 9
+    MagicPower: 2
+    DefensePower: 5
+    ResistancePower: 2
+    SkillPower: 8
+    HealthApptitude: 70
+    AttackApptitude: 45
+    MagicApptitude: 15
+    DefenseApptitude: 25
+    ResistanceApptitude: 10
+    SkillApptitude: 40
   _unitType: Infantry

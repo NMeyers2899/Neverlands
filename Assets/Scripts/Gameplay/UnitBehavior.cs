@@ -14,8 +14,12 @@ public class UnitBehavior : MonoBehaviour
     private int _level = 1;
 
     [SerializeField]
-    [Tooltip("The stats for the given unit.")]
-    private UnitStats _unitClassStats, _unitRaceStats;
+    [Tooltip("The stats for the given unit based off of their race.")]
+    private RaceUnitStats _unitRaceStats;
+
+    [SerializeField]
+    [Tooltip("The stats for the given unit based off of their class.")]
+    private ClassUnitStats _unitClassStats;
 
     [Tooltip("The unit's current health. Cannot go higher than its max. Once it hits zero, the unit is considered dead.")]
     private float _currentHealth;
@@ -23,23 +27,8 @@ public class UnitBehavior : MonoBehaviour
     [Tooltip("The combined names of the unit's race and class.")]
     private string _unitTypes;
 
-    [Tooltip("The base stats of a given unit type, which represent the following.\n" +
-             "0 : The maximum health of the unit.\n" +
-             "1 : The attack power of the unit.\n" +
-             "2 : The magic power of the unit.\n" +
-             "3 : The defense power of the unit. Meant to resist another unit's attack.\n" +
-             "4 : The resistance power of the unit. Meant to resist another unit's magic.\n" +
-             "5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.")]
-    private float[] _unitStats = new float[6];
-
-    [Tooltip("The following determines the rate at which each stat will grow for a unit during a level up (calculated as a percentage).\n" +
-             "0 : The maximum health of the unit.\n" +
-             "1 : The attack power of the unit.\n" +
-             "2 : The magic power of the unit.\n" +
-             "3 : The defense power of the unit. Meant to resist another unit's attack.\n" +
-             "4 : The resistance power of the unit. Meant to resist another unit's magic.\n" +
-             "5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.")]
-    private float[] _unitStatApptitudes = new float[6];
+    [Tooltip("The stats and apptitudes of this unit.")]
+    private UnitTypeData _unitStats;
 
     /// <summary>
     /// The name of the unit.
@@ -62,73 +51,68 @@ public class UnitBehavior : MonoBehaviour
     public float CurrentHealth { get { return _currentHealth; } }
 
     /// <summary>
-    /// The stats of a given unit type, which represent the following. 
-    /// 0 : The maximum health of the unit.
-    /// 1 : The attack power of the unit.
-    /// 2 : The magic power of the unit.
-    /// 3 : The defense power of the unit. Meant to resist another unit's attack.
-    /// 4 : The resistance power of the unit. Meant to resist another unit's magic.
-    /// 5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.
+    /// The stats and apptitudes of this unit.
     /// </summary>
-    public float[] UnitStats { get { return _unitStats; } }
-
-    /// <summary>
-    /// The following determines the rate at which each stat will grow for a unit during a level up (calculated as a percentage).
-    /// 0 : The maximum health of the unit.
-    /// 1 : The attack power of the unit.
-    /// 2 : The magic power of the unit.
-    /// 3 : The defense power of the unit. Meant to resist another unit's attack.
-    /// 4 : The resistance power of the unit. Meant to resist another unit's magic.
-    /// 5 : The skill of the unit, determining how often it can hit an attack, get critical hits, or dodge an attack.
-    /// </summary>
-    public float[] UnitStatApptitudes { get { return _unitStatApptitudes; } }
+    public UnitTypeData UnitStats { get { return _unitStats;} }
 
     /// <summary>
     /// Provides the formula for leveling up.
     /// </summary>
     private void OnLevelUp()
     {
-        // For each stat, perform its level up calculation.
-        for(int i = 0; i < _unitStats.Length; i++)
-        {
-            // If the stat is maximum health...
-            if(i == 0)
-            {
-                // ...perform the calculation for increasing health.
-                _unitStats[i] += ((_unitStats[i] / _level + 70) * ((_unitClassStats.UnitStatApptitudes[i] + _unitRaceStats.UnitStatApptitudes[i]) / 100));
-                if (_unitStats[i] > 999999999)
-                    _unitStats[i] = 999999999;
-            }
-            // If the stat is not maximum health...
-            else
-            {
-                // ...perform the calculation for increasing the other stats.
-                _unitStats[i] += ((_unitStats[i] / _level + 10) * ((_unitClassStats.UnitStatApptitudes[i] + _unitRaceStats.UnitStatApptitudes[i]) / 100));
-                if (_unitStats[i] > 999999)
-                    _unitStats[i] = 999999;
-            }
-        }
+        // Provides the formula for each individual stat to increase by.
+        _unitStats.MaxHealth += ((_unitStats.MaxHealth / _level + 70) * ((_unitStats.HealthApptitude) / 100));
+        if (_unitStats.MaxHealth > 999999999)
+            _unitStats.MaxHealth = 999999999;
+        
+        _unitStats.AttackPower += ((_unitStats.AttackPower / _level + 10) * ((_unitStats.AttackApptitude) / 100));
+        if (_unitStats.AttackPower > 999999)
+            _unitStats.AttackPower = 999999;
+        
+        _unitStats.MagicPower += ((_unitStats.MagicPower / _level + 10) * ((_unitStats.MagicApptitude) / 100));
+        if (_unitStats.MagicPower > 999999)
+            _unitStats.MagicPower = 999999;
+
+        _unitStats.DefensePower += ((_unitStats.DefensePower / _level + 10) * ((_unitStats.DefenseApptitude) / 100));
+        if (_unitStats.DefensePower > 999999)
+            _unitStats.DefensePower = 999999;
+
+        _unitStats.ResistancePower += ((_unitStats.ResistancePower / _level + 10) * ((_unitStats.ResistanceApptitude) / 100));
+        if (_unitStats.ResistancePower > 999999)
+            _unitStats.ResistancePower = 999999;
+
+        _unitStats.SkillPower += ((_unitStats.SkillPower / _level + 10) * ((_unitStats.SkillApptitude) / 100));
+        if (_unitStats.SkillPower > 999999)
+            _unitStats.SkillPower = 999999;
     }
 
     private void Awake()
     {
         // Setting up the unit's types.
-        _unitTypes = _unitRaceStats.UnitTypeName + " / " + _unitClassStats.UnitTypeName;
+        _unitTypes = _unitRaceStats.UnitTypeData.UnitTypeName + " / " + _unitClassStats.UnitTypeData.UnitTypeName;
 
         // Setting up the unit's base stats by combining the class and race stats.
-        for (int i = 0; i < _unitStats.Length; i++)
-            _unitStats[i] = _unitClassStats.UnitBaseStats[i] + _unitRaceStats.UnitBaseStats[i];
+        _unitStats.MaxHealth = _unitRaceStats.UnitTypeData.MaxHealth + _unitClassStats.UnitTypeData.MaxHealth;
+        _unitStats.AttackPower = _unitRaceStats.UnitTypeData.AttackPower + _unitClassStats.UnitTypeData.AttackPower;
+        _unitStats.MagicPower = _unitRaceStats.UnitTypeData.MagicPower + _unitClassStats.UnitTypeData.MagicPower;
+        _unitStats.DefensePower = _unitRaceStats.UnitTypeData.DefensePower + _unitClassStats.UnitTypeData.DefensePower;
+        _unitStats.ResistancePower = _unitRaceStats.UnitTypeData.ResistancePower + _unitClassStats.UnitTypeData.ResistancePower;
+        _unitStats.SkillPower = _unitRaceStats.UnitTypeData.SkillPower + _unitClassStats.UnitTypeData.SkillPower;
 
         // Setting up the apptitudes for the unit by combining the class and race apptitudes.
-        for (int i = 0; i < _unitStatApptitudes.Length; i++)
-            _unitStatApptitudes[i] = _unitClassStats.UnitStatApptitudes[i] + _unitRaceStats.UnitStatApptitudes[i];
+        _unitStats.HealthApptitude = _unitRaceStats.UnitTypeData.HealthApptitude + _unitClassStats.UnitTypeData.HealthApptitude;
+        _unitStats.AttackApptitude = _unitRaceStats.UnitTypeData.AttackApptitude + _unitClassStats.UnitTypeData.AttackApptitude;
+        _unitStats.MagicApptitude = _unitRaceStats.UnitTypeData.MagicApptitude + _unitClassStats.UnitTypeData.MagicApptitude;
+        _unitStats.DefenseApptitude = _unitRaceStats.UnitTypeData.DefenseApptitude + _unitClassStats.UnitTypeData.DefenseApptitude;
+        _unitStats.ResistanceApptitude = _unitRaceStats.UnitTypeData.ResistanceApptitude + _unitClassStats.UnitTypeData.ResistanceApptitude;
+        _unitStats.SkillApptitude = _unitRaceStats.UnitTypeData.SkillApptitude + _unitClassStats.UnitTypeData.SkillApptitude;
 
         // If the unit's level is higher than one, level up by the difference between their current level and one.
         for (int i = 1; i < _level; i++)
             OnLevelUp();
 
         // Sets the current health of the unit to whatever its max health is.
-        _currentHealth = _unitStats[0];
+        _currentHealth = _unitStats.MaxHealth;
 
     }
 }
