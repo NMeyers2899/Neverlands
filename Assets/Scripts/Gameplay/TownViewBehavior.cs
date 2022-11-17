@@ -17,21 +17,6 @@ public class TownViewBehavior : MonoBehaviour
     [Tooltip("The town that the panel is currently viewing.")]
     private TownBehavior _town;
 
-    private static TownViewBehavior _instance;
-
-    public static TownViewBehavior Instance
-    {
-        get
-        {
-            if (!_instance)
-            {
-                _instance = FindObjectOfType<TownViewBehavior>();
-            }
-
-            return _instance;
-        }
-    }
-
     /// <summary>
     /// The town that the panel is currently viewing.
     /// </summary>
@@ -43,9 +28,17 @@ public class TownViewBehavior : MonoBehaviour
     /// <param name="index"> The position of the squad in the town's list. </param>
     public void SelectSquadFromTown(int index)
     {
+        if (index > _town.NestedSquads.Count)
+            return;
+
         GameManagerBehavior.Instance.SelectedSquad = _town.NestedSquads[index];
         _town.OnRemove(_town.NestedSquads[index]);
         GameManagerBehavior.Instance.SelectedTown = null;
+    }
+
+    private void Awake()
+    {
+        GameManagerBehavior.Instance.TownViewPanel = this;
     }
 
     private void Update()
@@ -55,11 +48,11 @@ public class TownViewBehavior : MonoBehaviour
 
         _townName.text = _town.TownName;
 
-        for(int i = 0; i < _town.NestedSquads.Count; i++)
+        for(int i = 0; i < 10; i++)
         {
-            _squadIcons[i].text = _town.NestedSquads[i].CommanderUnit.UnitName;
-
-            if (!_town.NestedSquads[i])
+            if (i < _town.NestedSquads.Count)
+                _squadIcons[i].text = _town.NestedSquads[i].CommanderUnit.UnitName;
+            else
                 _squadIcons[i].text = "";
         }
     }

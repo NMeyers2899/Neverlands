@@ -73,7 +73,7 @@ public class TownBehavior : MonoBehaviour
         _nestedSquads.Remove(squad);
 
         // Change the location of the object.
-        squad.transform.Translate(transform.position.x + 5, 0.0f, transform.position.z + 5);
+        squad.transform.Translate(transform.position.x + 2, 0.0f, transform.position.z + 2);
 
         // Disable the squad's collider while it is in the town.
         squad.gameObject.SetActive(true);

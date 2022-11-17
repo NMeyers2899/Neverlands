@@ -19,21 +19,6 @@ public class SquadViewBehavior : MonoBehaviour
     [Tooltip("The unit currently being looked at.")]
     private UnitBehavior _unit;
 
-    private static SquadViewBehavior _instance;
-
-    public static SquadViewBehavior Instance
-    {
-        get
-        {
-            if(!_instance)
-            {
-                _instance = FindObjectOfType<SquadViewBehavior>();
-            }
-
-            return _instance;
-        }
-    }
-
     /// <summary>
     /// The squad this panel is looking at.
     /// </summary>
@@ -44,12 +29,18 @@ public class SquadViewBehavior : MonoBehaviour
     /// </summary>
     public UnitBehavior Unit { get { return _unit; } set { _unit = value; } }
 
+    private void Awake()
+    {
+        GameManagerBehavior.Instance.SquadViewPanel = this;
+    }
+
     /// <summary>
     /// Sets the view's unit to a given unit in the squad.
     /// </summary>
     /// <param name="position"> The position in the squad's array. </param>
     public void SetUnit(int position)
     {
+        _squad.MovementBehavior.TargetPos = _squad.transform.position;
         _unit = _squad.Units[position];
     }
 

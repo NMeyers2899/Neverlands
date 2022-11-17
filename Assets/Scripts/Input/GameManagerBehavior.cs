@@ -11,6 +11,10 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("The town that the player has currently selected.")]
     private TownBehavior _selectedTown;
 
+    private SquadViewBehavior _squadViewPanel;
+
+    private TownViewBehavior _townViewPanel;
+
     [Tooltip("The object that will be hit with a ray.")]
     private RaycastHit _hit;
 
@@ -51,8 +55,8 @@ public class GameManagerBehavior : MonoBehaviour
     /// </summary>
     public TownBehavior SelectedTown { get { return _selectedTown; } set { _selectedTown = value; } }
 
-    public SquadViewBehavior SquadViewPanel { get { return SquadViewBehavior.Instance; } }
-    public TownViewBehavior TownViewPanel { get { return TownViewBehavior.Instance; } }
+    public SquadViewBehavior SquadViewPanel { get { return _squadViewPanel; } set { _squadViewPanel = value; } }
+    public TownViewBehavior TownViewPanel { get { return _townViewPanel; } set { _townViewPanel = value; } }
 
     /// <summary>
     /// Handles the logic that occurs when n object is selected.
