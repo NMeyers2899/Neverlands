@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class GameManagerBehavior : MonoBehaviour
 {
     [Tooltip("The squad that the player has currently selected.")]
-    private static SquadMovementBehavior _selectedSquad;
+    private SquadBehavior _selectedSquad;
 
     [Tooltip("The town that the player has currently selected.")]
-    private static TownBehavior _selectedTown;
+    private TownBehavior _selectedTown;
 
     [Tooltip("The object that will be hit with a ray.")]
     private RaycastHit _hit;
@@ -17,13 +17,42 @@ public class GameManagerBehavior : MonoBehaviour
     [Tooltip("The current position of the mouse when the user clicks either button.")]
     private Vector3 _mousePosition;
 
-    [SerializeField]
-    [Tooltip("The panel that will display a squad or unit's stats.")]
-    private SquadViewBehavior _squadViewPanel;
+    [Tooltip("An instance of the GameManagerBehavior, makes an object with this behavior attached if there is not one currently.")]
+    private static GameManagerBehavior _instance;
 
-    [SerializeField]
-    [Tooltip("The panel that will display a town's stats and the squads within.")]
-    private TownViewBehavior _townViewPanel;
+    /// <summary>
+    /// An instance of the GameManagerBehavior, makes an object with this behavior attached if there is not one currently.
+    /// </summary>
+    public static GameManagerBehavior Instance
+    {
+        get 
+        {
+            if(!_instance)
+            {
+                _instance = FindObjectOfType<GameManagerBehavior>();
+            }
+            if(!_instance)
+            {
+                GameObject gameManager = new GameObject("GameManager");
+                _instance = gameManager.AddComponent<GameManagerBehavior>();
+            }
+
+            return _instance;
+        }
+    }
+
+    /// <summary>
+    /// The squad that the player has currently selected.
+    /// </summary>
+    public SquadBehavior SelectedSquad { get { return _selectedSquad; } set { _selectedSquad = value; } }
+
+    /// <summary>
+    /// The town that the player has currently selected.
+    /// </summary>
+    public TownBehavior SelectedTown { get { return _selectedTown; } set { _selectedTown = value; } }
+
+    public SquadViewBehavior SquadViewPanel { get { return SquadViewBehavior.Instance; } }
+    public TownViewBehavior TownViewPanel { get { return TownViewBehavior.Instance; } }
 
     /// <summary>
     /// Handles the logic that occurs when n object is selected.
@@ -37,9 +66,9 @@ public class GameManagerBehavior : MonoBehaviour
             // Make sure that the town panel is set false.
             _selectedTown = null;
             // Set the view panel's squad to the given squad.
-            _squadViewPanel.gameObject.SetActive(true);
-            SquadViewBehavior.Unit = null;
-            SquadViewBehavior.Squad = selectedObject.GetComponent<SquadBehavior>();
+            SquadViewPanel.gameObject.SetActive(true);
+            SquadViewPanel.Unit = null;
+            SquadViewPanel.Squad = selectedObject.GetComponent<SquadBehavior>();
 
             return;
         }
@@ -50,31 +79,17 @@ public class GameManagerBehavior : MonoBehaviour
             _selectedTown = selectedObject.GetComponent<TownBehavior>();
 
             _selectedSquad = null;
-            _townViewPanel.gameObject.SetActive(true);
-            TownViewBehavior.Town = _selectedTown;
+            TownViewPanel.gameObject.SetActive(true);
+            TownViewPanel.Town = _selectedTown;
         }
     }
 
     /// <summary>
-    /// The squad that the player has currently selected.
-    /// </summary>
-    public static SquadMovementBehavior SelectedSquad { get { return _selectedSquad; } }
-
-    /// <summary>
     /// Handles the logic that occurs when a unit is deselected.
     /// </summary>
-    public static void DeselectObject()
+    public void DeselectObject()
     {
         _selectedSquad = null;
-        _selectedTown = null;
-    }
-
-    /// <summary>
-    /// Allows the user to select a squad in a given position from a town.
-    /// </summary>
-    public static void SelectSquadFromTown(int position)
-    {
-        _selectedSquad = _selectedTown.NestedSquads[position].GetComponent<SquadMovementBehavior>();
         _selectedTown = null;
     }
 
@@ -82,10 +97,10 @@ public class GameManagerBehavior : MonoBehaviour
     void Update()
     {
         if(!_selectedSquad)
-            _squadViewPanel.gameObject.SetActive(false);
+            SquadViewPanel.gameObject.SetActive(false);
 
         if (!_selectedTown)
-            _townViewPanel.gameObject.SetActive(false);
+            TownViewPanel.gameObject.SetActive(false);
 
         // If the player left clicks...
         if (Input.GetMouseButtonDown(0))
@@ -102,11 +117,10 @@ public class GameManagerBehavior : MonoBehaviour
                 PlayerSelect(_hit.transform);
                 return;
             }
-
             // If the player has a selected squad...
-            else if(_selectedSquad.CompareTag("Player"))
+            else if(_selectedSquad && _selectedSquad.CompareTag("Player"))
                 // ...set that squad's target to the hit point.
-                _selectedSquad.TargetPos = _hit.point;  
+                _selectedSquad.MovementBehavior.TargetPos = _hit.point;  
         }
         
         // If the player right clicks, deselect the current unit.

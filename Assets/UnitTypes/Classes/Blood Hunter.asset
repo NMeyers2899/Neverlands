@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc1353e576f822d489a8a417422b915a, type: 3}
-  m_Name: Mariner
+  m_Name: Blood Hunter
   m_EditorClassIdentifier: 
   _unitTypeData:
-    UnitTypeName: Mariner
-    UnitTypeDescription: The open seas call to them. Adept in water magic, their
-      magic is only complimented by their ability in physical combat.
+    UnitTypeName: Blood Hunter
+    UnitTypeDescription: 
     MaxHealth: 10
     AttackPower: 6
     MagicPower: 7
@@ -28,4 +27,4 @@ MonoBehaviour:
     DefenseApptitude: 25
     ResistanceApptitude: 30
     SkillApptitude: 20
-  _unitType: Mage
+  _unitType: Infantry

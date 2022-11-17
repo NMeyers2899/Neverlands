@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _unitTypeData:
     UnitTypeName: Thaeve
-    UnitTypeDescription: With their four arms, Thaeve provide heavy and relentless
+    UnitTypeDescription: With their four arms, Thaeves provide heavy and relentless
       attacks. Though their place in society sees them considered lesser than most
       other groups.
     MaxHealth: 15

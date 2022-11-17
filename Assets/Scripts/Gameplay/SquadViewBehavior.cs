@@ -14,20 +14,35 @@ public class SquadViewBehavior : MonoBehaviour
     private Text[] _unitStats = new Text[2];
 
     [Tooltip("The squad this panel is looking at.")]
-    private static SquadBehavior _squad;
+    private SquadBehavior _squad;
 
     [Tooltip("The unit currently being looked at.")]
-    private static UnitBehavior _unit;
+    private UnitBehavior _unit;
+
+    private static SquadViewBehavior _instance;
+
+    public static SquadViewBehavior Instance
+    {
+        get
+        {
+            if(!_instance)
+            {
+                _instance = FindObjectOfType<SquadViewBehavior>();
+            }
+
+            return _instance;
+        }
+    }
 
     /// <summary>
     /// The squad this panel is looking at.
     /// </summary>
-    public static SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
+    public SquadBehavior Squad { get { return _squad; } set { _squad = value; } }
 
     /// <summary>
     /// The unit currently being looked at.
     /// </summary>
-    public static UnitBehavior Unit { get { return _unit; } set { _unit = value; } }
+    public UnitBehavior Unit { get { return _unit; } set { _unit = value; } }
 
     /// <summary>
     /// Sets the view's unit to a given unit in the squad.

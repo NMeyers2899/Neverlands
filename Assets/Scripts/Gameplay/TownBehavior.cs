@@ -44,6 +44,8 @@ public class TownBehavior : MonoBehaviour
             _factionIcon.material = NeutralFactionMaterial;
         else if (tag == "Enemy")
             _factionIcon.material = EnemyFactionMaterial;
+
+        _nestedSquads = new List<SquadBehavior>(); 
     }
 
     /// <summary>
@@ -52,15 +54,8 @@ public class TownBehavior : MonoBehaviour
     /// <param name="squad"> The squad being added. </param>
     private void OnAdd(SquadBehavior squad)
     {
-        // Add the squad to this town's next open spot.
-        for(int i = 0; i < _nestedSquads.Count; i++)
-        {
-            if (!_nestedSquads[i])
-            {
-                _nestedSquads[i] = squad;
-                break;
-            }
-        }
+        // Add the squad to the list of squads.
+        _nestedSquads.Add(squad);
 
         // Change the location of the object, and disable it.
         squad.transform.position = transform.position;
@@ -69,8 +64,19 @@ public class TownBehavior : MonoBehaviour
         squad.gameObject.SetActive(false);
 
         // Has the game manager deselect the squad as long as it is the one the player currently controls.
-        if(GameManagerBehavior.SelectedSquad == squad)
-            GameManagerBehavior.DeselectObject();
+        if(GameManagerBehavior.Instance.SelectedSquad == squad)
+            GameManagerBehavior.Instance.DeselectObject();
+    }
+
+    public void OnRemove(SquadBehavior squad)
+    {
+        _nestedSquads.Remove(squad);
+
+        // Change the location of the object.
+        squad.transform.Translate(transform.position.x + 5, 0.0f, transform.position.z + 5);
+
+        // Disable the squad's collider while it is in the town.
+        squad.gameObject.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision collision)
