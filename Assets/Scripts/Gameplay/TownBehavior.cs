@@ -22,7 +22,7 @@ public class TownBehavior : MonoBehaviour
 
     [SerializeField]
     [Tooltip("The squads that are currently within the town.")]
-    private SquadBehavior[] _nestedSquads = new SquadBehavior[10];
+    private List<SquadBehavior> _nestedSquads;
 
     /// <summary>
     /// The name of the town.
@@ -32,7 +32,7 @@ public class TownBehavior : MonoBehaviour
     /// <summary>
     /// The squads that are currently within the town.
     /// </summary>
-    public SquadBehavior[] NestedSquads { get { return _nestedSquads; } }
+    public List<SquadBehavior> NestedSquads { get { return _nestedSquads; } }
 
     private void Awake()
     {
@@ -53,7 +53,7 @@ public class TownBehavior : MonoBehaviour
     private void OnAdd(SquadBehavior squad)
     {
         // Add the squad to this town's next open spot.
-        for(int i = 0; i < _nestedSquads.Length; i++)
+        for(int i = 0; i < _nestedSquads.Count; i++)
         {
             if (!_nestedSquads[i])
             {
@@ -86,7 +86,7 @@ public class TownBehavior : MonoBehaviour
         if (squad.CompareTag(tag))
             OnAdd(squad);
         // If the squad is not a part of the same faction...
-        else if (!squad.CompareTag(tag) && _nestedSquads.Length == 0)
+        else if (!squad.CompareTag(tag) && _nestedSquads.Count == 0)
         {
             // ...change the material of the icon depending on which faction is taking the town.
             if (squad.tag == "Player")
