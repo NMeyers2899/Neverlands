@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class NodeBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Tooltip("The distance from this node to the start node.")]
+    private int gCost;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Tooltip("The distance from this node to the end node.")]
+    private int hCost;
+
+    [Tooltip("The combined cost of the gCost and hCost.")]
+    private int fCost;
 }
