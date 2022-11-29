@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1353e576f822d489a8a417422b915a, type: 3}
+  m_Name: Necromancer
+  m_EditorClassIdentifier: 
+  _unitTypeData:
+    UnitTypeName: Necromancer
+    UnitTypeDescription: Infused with unholy magic, they bring the corpses of the
+      fallen back to life to fight for them.
+    MaxHealth: 6
+    AttackPower: 2
+    MagicPower: 7
+    DefensePower: 3
+    ResistancePower: 4
+    SkillPower: 5
+    HealthApptitude: 45
+    AttackApptitude: 15
+    MagicApptitude: 35
+    DefenseApptitude: 20
+    ResistanceApptitude: 30
+    SkillApptitude: 25
+  _unitType: Mage

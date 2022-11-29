@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20f2f1d836be6844bdadbb6a730cd69, type: 3}
+  m_Name: Askra
+  m_EditorClassIdentifier: 
+  _unitTypeData:
+    UnitTypeName: Askra
+    UnitTypeDescription: 
+    MaxHealth: 8
+    AttackPower: 4
+    MagicPower: 5
+    DefensePower: 2
+    ResistancePower: 3
+    SkillPower: 4
+    HealthApptitude: 55
+    AttackApptitude: 25
+    MagicApptitude: 30
+    DefenseApptitude: 20
+    ResistanceApptitude: 20
+    SkillApptitude: 25
