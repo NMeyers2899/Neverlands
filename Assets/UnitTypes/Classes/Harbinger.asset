@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1353e576f822d489a8a417422b915a, type: 3}
+  m_Name: Harbinger
+  m_EditorClassIdentifier: 
+  _unitTypeData:
+    UnitTypeName: Harbinger
+    UnitTypeDescription: The embodiment of the Architect's will.
+    MaxHealth: 15
+    AttackPower: 8
+    MagicPower: 8
+    DefensePower: 9
+    ResistancePower: 7
+    SkillPower: 8
+    HealthApptitude: 85
+    AttackApptitude: 60
+    MagicApptitude: 55
+    DefenseApptitude: 55
+    ResistanceApptitude: 60
+    SkillApptitude: 60
+  _unitType: Divine

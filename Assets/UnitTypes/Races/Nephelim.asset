@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20f2f1d836be6844bdadbb6a730cd69, type: 3}
+  m_Name: Nephelim
+  m_EditorClassIdentifier: 
+  _unitTypeData:
+    UnitTypeName: Nephilim
+    UnitTypeDescription: Created by the Architect to foster life through the Neverlands.
+    MaxHealth: 16
+    AttackPower: 9
+    MagicPower: 9
+    DefensePower: 8
+    ResistancePower: 9
+    SkillPower: 9
+    HealthApptitude: 80
+    AttackApptitude: 55
+    MagicApptitude: 60
+    DefenseApptitude: 50
+    ResistanceApptitude: 55
+    SkillApptitude: 55

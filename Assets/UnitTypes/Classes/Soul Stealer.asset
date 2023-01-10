@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1353e576f822d489a8a417422b915a, type: 3}
+  m_Name: Soul Stealer
+  m_EditorClassIdentifier: 
+  _unitTypeData:
+    UnitTypeName: Soul Stealer
+    UnitTypeDescription: '*Exclusive to Mistra* With the power of a fallen god, he
+      is able to steal the abilities of those he kills.'
+    MaxHealth: 12
+    AttackPower: 5
+    MagicPower: 8
+    DefensePower: 4
+    ResistancePower: 5
+    SkillPower: 6
+    HealthApptitude: 55
+    AttackApptitude: 25
+    MagicApptitude: 35
+    DefenseApptitude: 20
+    ResistanceApptitude: 30
+    SkillApptitude: 30
+  _unitType: Infantry
